@@ -12,7 +12,8 @@
   "dependencies": {
     "arg": "^5.0.1",
     "chalk": "5.0.0",
-    "fast-glob": "^3.2.11"
+    "fast-glob": "^3.2.11",
+    "lilconfig": "2.0.4"
   },
   "devDependencies": {
     "eslint": "^8.7.0",
