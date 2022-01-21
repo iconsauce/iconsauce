@@ -1,0 +1,37 @@
+{
+  "name": "omnicon",
+  "version": "0.0.1",
+  "description": "A build tool to include only the icons used in your code.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "omnicon": "lib/cli.js"
+  },
+  "keywords": [
+    "build",
+    "icon",
+    "svg",
+    "incremental",
+    "jit"
+  ],
+  "author": {
+    "name": "Vittorio Vittori",
+    "email": "vittorio.vittori@maggioli.it",
+    "role": "Design System Architect"
+  },
+  "contributors": [
+    {
+      "name": "Andrea Pruccoli",
+      "email": "andrea.pruccoli@maggioli.it",
+      "role": "Software Engineer"
+    },
+    {
+      "name": "Nicola Tamburini",
+      "email": "nicola.tamburini@maggioli.it",
+      "role": "Software Engineer"
+    }
+  ],
+  "license": "ISC"
+}
