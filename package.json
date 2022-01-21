@@ -9,6 +9,10 @@
   "bin": {
     "omnicon": "lib/cli.js"
   },
+  "dependencies": {
+    "arg": "^5.0.1",
+    "glob": "^7.2.0"
+  },
   "keywords": [
     "build",
     "icon",
