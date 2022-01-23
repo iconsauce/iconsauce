@@ -1,48 +1,44 @@
 import { readFile } from 'fs/promises'
 import chalk from 'chalk'
 
-const searchTerms = [
-  /(mdi(\/[a-z-]*){1,2})+/gm,
-  /(mdi(\/[a-z-]*){1,2})+/gm,
-  /(mdi\/([a-z-]*)\/?([a-z-]*)?)+/gm,
-  /((mdi)\/([a-z-]*)\/?([a-z-]*)?)+/gm,
-  /((mdi|gm|mgg)\/([a-z-]*)\/?([a-z-]*)?)+/gm,
-]
+const pluginIconFamilies = {
+  gm: {
+    // 'gm/icon-name || gm/type/icon-name',
+    regex: {
+      code: /(gm)(\/{1}[a-z\-]+){1,2}/gm,
+      icon: /(gm)(\/{1}[a-z\-]+){1,2}/gm,
+    },
+    default: 'filled',
+    types: [
+      'filled',
+      'outline',
+      'round',
+      'sharp',
+    ],
+    path: 'material-design-icons-updated/icons/[type]/[path]/ic_[3d_rotation]_24px.svg',
+  },
+  mdi: /(mdi)(\/{1}[a-z\-]+){1,2}/gm,
+  mgg: /(mgg)(\/{1}[a-z\-]+){1,2}/gm,
+}
+
+// /((mdi|gm|mgg)\/([a-z-]*)\/?([a-z-]*)?)+/gm
+// /((mdi|gm|mgg)(\/[a-z\-]{2,}){1,2})/gm
+// /(mdi|gm|mgg)(\/[a-z\-]{2,})+/gm
+// const searchIcons = new RegExp(`((${pluginIconFamilies.join('|')})\/([a-z-]*)\/?([a-z-]*)?)+`, 'gm')
+const searchIcons = /(mdi|gm|mgg)(\/{1}[a-z\-]+){1,2}/gm
 
 const occurrencies = async entries => {
   console.info('occurrencies')
 
   let entry
+  let inputIcons = []
   for (entry of entries) {
     const fileContent = await readFile(entry, 'utf8').catch(error => {
       console.error(error)
     })
-    console.log(fileContent)
-
-    // // We want full words, so we use full word boundary in regex.
-    // const regex = new RegExp('\\b' + filter + '\\b');
-    // if (regex.test(fileContent)) {
-    //     console.log(`Your word was found in file: ${file}`);
-    // }
+    inputIcons = [...new Set([...inputIcons, ...fileContent.match(searchIcons)])]
   }
-
-  // return new Promise(resolve => {
-  //   const regEx = new RegExp(text, 'i')
-  //   const result = [];
-
-  //   await readFile('file/' + filename + '.txt', 'utf8', (err, contents) => {
-  //     console.log(err)
-  //     let lines = contents.toString().split("\n");
-  //     lines.forEach(line => {
-  //       if (line && line.search(regEx) >= 0) {
-  //         console.log('found in file ', filename)
-  //         result.push(line)
-  //       }
-  //     })
-  //     console.log('finished search');
-  //     resolve(result);
-  //   })
-  // });
+  console.log(inputIcons.sort())
 }
 
 export {
