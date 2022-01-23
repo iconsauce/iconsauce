@@ -1,13 +1,5 @@
 const Component = () => {
 
-  /*
-  gm/accessible-forward <== accessible_forward
-  gm/vpn-key            <== vpn_key
-  gm/warning            <== warning
-  mdi/emoticon-happy    <== emoticon-happy
-  mgg/terminal          <== terminal
-  */
-
   const icon = 'gm/warning'
 
   return <section className={ icon }>

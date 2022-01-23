@@ -2,6 +2,7 @@ import fg from 'fast-glob'
 import chalk from 'chalk'
 import { readFile } from 'fs/promises'
 import { lilconfig } from 'lilconfig'
+import { occurrencies } from './lib/occurrencies.mjs'
 const PROJECT_PATH = '..'
 
 const loadConfig = async configPath => {
@@ -19,11 +20,13 @@ const loadConfig = async configPath => {
 
 const build = async opts => {
   const packageJson = JSON.parse(await readFile(new URL(`${PROJECT_PATH}/package.json`, import.meta.url)))
-  console.log(`${chalk.cyan(packageJson.name)} ${packageJson.version}`)
+  console.info(`${chalk.cyan(packageJson.name)} ${packageJson.version}`)
+  if (opts.verbose) {
+    console.info('Verbose mode enabled')
+  }
   const config = await loadConfig(opts.configPath)
-  console.log(config.content)
   const entries = await fg(config.content, { dot: true })
-  console.log(entries)
+  await occurrencies(entries)
 }
 
 export {
