@@ -1,12 +1,31 @@
-import path from 'path'
-import { readdir } from 'fs/promises'
+import fg from 'fast-glob'
 
-const dirpath = path.join(__dirname, '/path')
-
-readdir(dirpath, (err, files) => {
-  if (err) {
-    console.error(err)
+const dictionary = async (config, icons) => {
+  const iconsDictionary = []
+  let icon
+  for (icon of icons) {
+    if (icon === null) {
+      console.log(icon.match(config.regex.lib))
+    }
+    iconsDictionary.push(
+      {
+        name: icon,
+      },
+    )
   }
-  const icons = files.filter(el => path.extname(el) === '.svg')
-  // do something with your files, by the way they are just filenames...
-})
+}
+
+const geticons = async config => {
+  let pluginItem
+  let icons = []
+  for (pluginItem of config.plugin) {
+    const entries = await fg(pluginItem.path, { dot: true })
+    icons = [...icons, ...entries]
+  }
+  const iconsDictionary = await dictionary(config, icons)
+  // console.log(iconsDictionary)
+}
+
+export {
+  geticons,
+}
