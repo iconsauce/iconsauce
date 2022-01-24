@@ -5,6 +5,7 @@ import { lilconfig } from 'lilconfig'
 import { occurrences } from './lib/occurrences.mjs'
 import { icons } from './lib/icons.mjs'
 import { filter } from './lib/filter.mjs'
+import { font } from './lib/font.mjs'
 
 const PROJECT_PATH = '..'
 
@@ -28,11 +29,11 @@ const build = async opts => {
     console.info('Verbose mode enabled')
   }
   const config = await loadConfig(opts)
-  // console.log(config)
   const dictionary = await icons(config)
   const files = await fg(config.content, { dot: true })
   const selectors = await occurrences(config, files)
   const iconList = filter(config, dictionary, selectors)
+  await font(config, iconList)
 }
 
 export {

@@ -2,10 +2,10 @@ import chalk from 'chalk'
 
 const filter = (config, dictionary, selectors) => {
   let occurrence
-  const filteredDictionary = []
+  const filteredDictionary = {}
   for (occurrence of selectors.occurrences) {
     if (dictionary[occurrence] !== undefined) {
-      filteredDictionary.push(dictionary[occurrence])
+      filteredDictionary[occurrence] = dictionary[occurrence]
     } else {
       if (config.skipWarnings) {
         console.error(`Warning: ${chalk.yellow(occurrence)} from ${chalk.blue(selectors.map[occurrence])} not found `)
