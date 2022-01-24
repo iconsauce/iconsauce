@@ -14,6 +14,7 @@
     "arg": "^5.0.1",
     "chalk": "5.0.0",
     "fast-glob": "^3.2.11",
+    "handlebars": "^4.7.7",
     "lilconfig": "2.0.4",
     "material-design-icons-updated": "^7.0.0",
     "svgtofont": "^3.14.0"
