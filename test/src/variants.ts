@@ -14,6 +14,9 @@ const variants = [
   {
     five: 'text-brand-maggioli-06/70 mgg/todo-in-prendere-in-carico bg-adjust-tone-04/90',
   },
+  {
+    six: 'gm/non-existing-selector',
+  },
 ]
 
 export default variants

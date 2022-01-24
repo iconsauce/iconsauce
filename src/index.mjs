@@ -2,19 +2,20 @@ import fg from 'fast-glob'
 import chalk from 'chalk'
 import { readFile } from 'fs/promises'
 import { lilconfig } from 'lilconfig'
-import { occurrencies } from './lib/occurrencies.mjs'
-import { geticons } from './lib/icons.mjs'
+import { occurrences } from './lib/occurrences.mjs'
+import { icons } from './lib/icons.mjs'
+import { filter } from './lib/filter.mjs'
 
 const PROJECT_PATH = '..'
 
-const loadConfig = async configPath => {
+const loadConfig = async opts => {
   const options = {
-    searchPlaces: [configPath],
+    searchPlaces: [opts.configPath],
     ignoreEmptySearchPlaces: false,
   }
   try {
     const configFile = await lilconfig('omnicon', options).search()
-    return configFile.config
+    return { ...configFile.config, ...opts.cli }
   } catch (error) {
     console.error(error)
   }
@@ -26,12 +27,12 @@ const build = async opts => {
   if (opts.verbose) {
     console.info('Verbose mode enabled')
   }
-  const config = await loadConfig(opts.configPath)
+  const config = await loadConfig(opts)
   // console.log(config)
-  const icons = await geticons(config)
-  console.log(icons)
-  const entries = await fg(config.content, { dot: true })
-  await occurrencies(entries)
+  const dictionary = await icons(config)
+  const files = await fg(config.content, { dot: true })
+  const selectors = await occurrences(config, files)
+  const iconList = filter(config, dictionary, selectors)
 }
 
 export {

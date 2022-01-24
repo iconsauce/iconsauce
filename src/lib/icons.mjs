@@ -1,31 +1,32 @@
 import fg from 'fast-glob'
+import chalk from 'chalk'
 
-const dictionary = async (config, icons) => {
-  const iconsDictionary = []
+const dictionary = async (plugin, icons) => {
+  const iconsDictionary = {}
   let icon
   for (icon of icons) {
-    if (icon === null) {
-      console.log(icon.match(config.regex.lib))
-    }
-    iconsDictionary.push(
-      {
-        name: icon,
-      },
-    )
+    const results = icon.match(plugin.regex.lib)
+    iconsDictionary[plugin.key(results)] = icon
   }
+  return iconsDictionary
 }
 
-const geticons = async config => {
+const icons = async config => {
   let pluginItem
   let icons = []
+  let iconsDictionary = {}
   for (pluginItem of config.plugin) {
     const entries = await fg(pluginItem.path, { dot: true })
     icons = [...icons, ...entries]
+    const newIcons = await dictionary(pluginItem, icons)
+    iconsDictionary = { ...iconsDictionary, ...newIcons }
   }
-  const iconsDictionary = await dictionary(config, icons)
-  // console.log(iconsDictionary)
+  if (config.verbose) {
+    console.info(`Found ${chalk.green(Object.keys(iconsDictionary).length)} icons from ${chalk.green(config.plugin.length)} ${config.plugin.length === 1 ? 'library' : 'libraries'}`)
+  }
+  return iconsDictionary
 }
 
 export {
-  geticons,
+  icons,
 }
