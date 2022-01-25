@@ -3,6 +3,7 @@
 const path = require('path')
 
 module.exports = {
+  prefix: 'gm',
   regex: {
     code: /(gm)(\/{1}[a-z\-]+){1,2}/gm,
     lib: /(([a-zA-Z_\-\/]+\/)(filled|outline|round|sharp)[a-zA-Z_\-\/]+\/ic_([0-9a-zA-Z_]+)_24px\.svg)/,

@@ -6,6 +6,7 @@ import { occurrences } from './lib/occurrences.mjs'
 import { icons } from './lib/icons.mjs'
 import { filter } from './lib/filter.mjs'
 import { fontBase64 } from './lib/font.mjs'
+import { css } from './lib/css.mjs'
 
 const PROJECT_PATH = '..'
 
@@ -36,11 +37,12 @@ const build = async opts => {
     console.info('Verbose mode enabled')
   }
   const config = await loadConfig(opts)
-  const dictionary = await icons(config)
+  const iconDictionary = await icons(config)
   const files = await fg(config.content, { dot: true })
   const selectors = await occurrences(config, files)
-  const iconList = filter(config, dictionary, selectors)
-  await fontBase64(config, iconList)
+  const iconList = filter(config, iconDictionary, selectors)
+  const { base64font, dictionary } = await fontBase64(config, iconList)
+  await css(config, base64font, dictionary)
 }
 
 export {
