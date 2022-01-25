@@ -1,20 +1,23 @@
 import svg2ttf from 'svg2ttf'
 import SVGIcons2SVGFontStream from 'svgicons2svgfont'
 import path from 'path'
+import chalk from 'chalk'
 import { mkdir, readFile } from 'fs/promises'
 import { createWriteStream, createReadStream } from 'fs'
+import { TEMP_PATH } from './utils.mjs'
 
-const TEMP_PATH = path.join('../.temp')
-const TEMP_FONT_PATH_DIR = path.join(TEMP_PATH, 'font')
-const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH_DIR, '/omnicon.svg')
+const TEMP_FONT_PATH = path.join(TEMP_PATH, 'font/')
+const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, '/omnicon.svg')
 
 const fontBase64 = async (config, icons) => {
-  await mkdir(TEMP_FONT_PATH_DIR, { recursive: true })
+  await mkdir(TEMP_FONT_PATH, { recursive: true })
+    .catch(console.error)
   let startUnicode = 0xea01
 
   return new Promise(resolve => {
     const fontStream = new SVGIcons2SVGFontStream({
       fontName: config.fontFamily,
+      log: () => {},
     })
 
     const dictionary = {}
@@ -34,14 +37,12 @@ const fontBase64 = async (config, icons) => {
     fontStream
       .pipe(createWriteStream(TEMP_FONT_PATH_SVG)
         .on('finish', () => {
-          console.log('Font successfully created!')
           fontTottf().then(base64font => {
-            console.log('ttf created')
             resolve({ base64font, dictionary })
           })
         })
         .on('error', err => {
-          console.log(err)
+          throw new Error(console.error(chalk.red(err)))
         }),
       )
     fontStream.end()

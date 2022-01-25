@@ -1,7 +1,4 @@
-import chalk from 'chalk'
 import handlebars from 'handlebars'
-import path from 'path'
-import { writeFile } from 'fs/promises'
 
 const template = handlebars.compile(`
 @font-face {
@@ -22,9 +19,6 @@ const template = handlebars.compile(`
 {{/each}}
 `)
 
-const TEMP_PATH = path.join('../.temp')
-const TEMP_CSS_PATH = path.join(TEMP_PATH, 'omnicon.css')
-
 const css = async (config, base64font, dictionary) => {
   const prefixes = []
   let plugin
@@ -33,15 +27,13 @@ const css = async (config, base64font, dictionary) => {
   }
   const sanitizedDictionary = sanitize(dictionary)
 
-  const templateString = template({
+  return template({
     fontBase64: base64font,
     classPrefixes: prefixes,
     fontFamily: config.fontFamily,
     fontSize: config.fontSize,
     selectors: sanitizedDictionary,
   })
-
-  await writeFile(TEMP_CSS_PATH, templateString)
 }
 
 const sanitize = dictionary => {
