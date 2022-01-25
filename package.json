@@ -17,7 +17,8 @@
     "handlebars": "^4.7.7",
     "lilconfig": "2.0.4",
     "material-design-icons-updated": "^7.0.0",
-    "svgtofont": "^3.14.0"
+    "svg2ttf": "^6.0.3",
+    "svgicons2svgfont": "^10.0.5"
   },
   "devDependencies": {
     "eslint": "^8.7.0",

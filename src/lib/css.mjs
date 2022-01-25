@@ -4,7 +4,7 @@ import handlebars from 'handlebars'
 const template = handlebars.compile(`
 @font-face {
   font-family: "{{fontFamily}}";
-  src: url(data:font/truetype;charset=utf-8;base64,{{base64}});
+  src: url(data:font/truetype;charset=utf-8;base64,{{fontBase64}});
 }
 {{#each classPrefixes}}
 [class^="{{this}}/"],
@@ -22,9 +22,10 @@ const template = handlebars.compile(`
 
 const css = opts => {
   return template({
-    base64: 'aabbccddee',
+    fontBase64: 'aabbccddee',
     classPrefixes: ['gm'],
     fontFamily: 'omnicon',
+    fontSize: '24px',
     selectors: [
       { 'gm\/icon-name': '\ea01' },
     ],

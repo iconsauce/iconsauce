@@ -5,9 +5,16 @@ import { lilconfig } from 'lilconfig'
 import { occurrences } from './lib/occurrences.mjs'
 import { icons } from './lib/icons.mjs'
 import { filter } from './lib/filter.mjs'
-import { font } from './lib/font.mjs'
+import { fontBase64 } from './lib/font.mjs'
 
 const PROJECT_PATH = '..'
+
+const decorate = config => {
+  const defaultInfos = {
+    fontFamily: 'omnicon',
+  }
+  return { ...config, ...defaultInfos }
+}
 
 const loadConfig = async opts => {
   const options = {
@@ -16,7 +23,7 @@ const loadConfig = async opts => {
   }
   try {
     const configFile = await lilconfig('omnicon', options).search()
-    return { ...configFile.config, ...opts.cli }
+    return decorate({ ...configFile.config, ...opts.cli })
   } catch (error) {
     console.error(error)
   }
@@ -33,7 +40,7 @@ const build = async opts => {
   const files = await fg(config.content, { dot: true })
   const selectors = await occurrences(config, files)
   const iconList = filter(config, dictionary, selectors)
-  await font(config, iconList)
+  await fontBase64(config, iconList)
 }
 
 export {

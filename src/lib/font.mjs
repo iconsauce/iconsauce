@@ -1,6 +1,8 @@
-import svgtofont from 'svgtofont'
+import svg2ttf from 'svg2ttf'
+import SVGIcons2SVGFontStream from 'svgicons2svgfont'
 import path from 'path'
 import { copyFile, mkdir } from 'fs/promises'
+import { createWriteStream, createReadStream } from 'fs'
 
 const TEMP_PATH = path.join('../.temp')
 const TEMP_SVG_PATH = path.join(TEMP_PATH, 'svg')
@@ -19,27 +21,33 @@ const moveSvgToTempFolder = async icons => {
   }
 }
 
-const font = async (config, icons) => {
-  await moveSvgToTempFolder(icons)
-  svgtofont({
-    website: false,
-    fontName: 'omicon',
-    src: TEMP_SVG_PATH,
-    dist: TEMP_FONT_PATH,
-    css: {
-      cssPath: TEMP_CSS_PATH,
-      fontSize: config.fontSize,
-      output: TEMP_CSS_PATH,
-    },
-    svgicons2svgfont: {
-      fontHeight: 1000,
-      normalize: true,
-    },
-  }).then(() => {
-    console.log('svgtofont built successfully')
+const fontBase64 = async (config, icons) => {
+  const fontStream = new SVGIcons2SVGFontStream({
+    fontName: config.fontFamily,
   })
+  fontStream
+    .pipe(createWriteStream(path.join(TEMP_FONT_PATH, '/hello.svg'))
+      .on('finish', () => {
+        console.log('Font successfully created!')
+      })
+      .on('error', err => {
+        console.log(err)
+      }),
+    )
+
+  let iconPath, i
+  for (iconPath of Object.values(icons)) {
+    i += 1
+    const glyph = createReadStream(path.resolve(iconPath))
+    glyph.metadata = {
+      unicode: [`'\uE00${i}'`],
+      name: 'icon1-icon2',
+    };
+  }
+
+  fontStream.end()
 }
 
 export {
-  font,
+  fontBase64,
 }
