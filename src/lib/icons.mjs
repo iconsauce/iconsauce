@@ -5,8 +5,8 @@ const dictionary = (plugin, icons) => {
   const iconsDictionary = {}
   let icon
   for (icon of icons) {
-    const results = icon.match(plugin.regex.lib)
-    iconsDictionary[plugin.key(results)] = icon
+    const iconPath = icon.match(plugin.regex.lib)
+    iconsDictionary[plugin.selector(iconPath).toLowerCase()] = icon
   }
   return iconsDictionary
 }

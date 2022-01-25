@@ -1,3 +1,8 @@
+
+const path = require('path')
+console.log(path.dirname(require.resolve('material-design-icons-updated')))
+console.log(path.dirname(require.resolve('@maggioli-design-system/svg-icons')))
+
 module.exports = {
   content: [
     './src/**/*.{tsx,ts}',

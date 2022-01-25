@@ -19,7 +19,7 @@
     "svgicons2svgfont": "^10.0.5"
   },
   "devDependencies": {
-    "@maggioli-design-system/svg-icons": "^2.6.0",
+    "@maggioli-design-system/svg-icons": "^2.6.3",
     "@mdi/svg": "^6.5.95",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
