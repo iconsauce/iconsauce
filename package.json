@@ -10,17 +10,17 @@
     "omnicon": "lib/cli.js"
   },
   "dependencies": {
-    "@mdi/svg": "^6.5.95",
     "arg": "^5.0.1",
     "chalk": "5.0.0",
     "fast-glob": "^3.2.11",
     "handlebars": "^4.7.7",
     "lilconfig": "2.0.4",
-    "material-design-icons-updated": "^7.0.0",
     "svg2ttf": "^6.0.3",
     "svgicons2svgfont": "^10.0.5"
   },
   "devDependencies": {
+    "@maggioli-design-system/svg-icons": "^2.6.0",
+    "@mdi/svg": "^6.5.95",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -29,6 +29,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "jest": "^27.4.7",
+    "material-design-icons-updated": "^7.0.0",
     "prettier": "^2.5.1"
   },
   "keywords": [

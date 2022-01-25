@@ -1,6 +1,6 @@
 const variants = [
   {
-    one: 'text-brand-maggioli-06 mgg/logo-ilibro',
+    one: 'text-brand-maggioli-06 mgg/todo-in-prendere-in-carico',
   },
   {
     two: 'gm/filled/vpn-key text-brand-maggioli-06',
