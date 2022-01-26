@@ -1,87 +1,65 @@
 # omnicon
-A build tool to include only the icons used in your code.
+An incremental build tool to include only the icons used in your code and.
 
 ### Input Examples
 
-```html
-<div>
-  <div class="mdi/close"></div>
-</div>
-```
+```jsx
+const Component = () => {
 
-```json
-{
-  "variant-a": {
-    "icon": "mgg/file-odt"
-  }
+  const icon = 'gm/filled/warning'
+
+  return <section className={ icon }>
+    <div className="grid desktop:grid-cols-4 gm/filled/add-chart tablet:grid-cols-2 grid-cols-1 desktop:gap-6 gap-12 desktop:auto-rows-fr desktop:items-end">
+      <i className="gm/filled/info"/>
+      <span className='bg-adjust-tone-01/24 gm/filled/error'/>
+      <div>
+        <footer title="gm/filled/close"></footer>
+      </div>
+    </div>
+  </section>
 }
-```
-
-```ts
-const selector = 'mdi/file-word'
+export default Component
 ```
 
 ### Output
 
 ```css
 @font-face {
-  font-family: "mgg-icons";
-  src: url(data:font/truetype;charset=utf-8;base64,AAEAAAALAIAAAwAwR1NVQiCLJXoAAAE4AAAAVE9TLzJAJlAAAAAAA=);
+  font-family: "iconsauce";
+  src: url(data:font/truetype;charset=utf-8;base64,AA...AA);
 }
-
-[class^="mdi/"], [class^="mgg/"], [class^="gmat/"] {
-  font-family: 'mgg-icons' !important;
-  font-size:24px;
-  font-style:normal;
-  -webkit-font-smoothing: antialiased;
+[class^="gm/"],
+[class*=" gm/"] {
   -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: "iconsauce" !important;
+  font-size: 24px;
+  font-style: normal;
 }
-
-.mdi\/menu-book:before {
-  content: "\ea01";
-}
+.gm\/filled\/add-chart::before { content: "\ea02"; }
+.gm\/filled\/close::before { content: "\ea03"; }
+.gm\/filled\/error::before { content: "\ea04"; }
+.gm\/filled\/info::before { content: "\ea05"; }
+.gm\/filled\/warning::before { content: "\ea08"; }
 ```
-
----
-
-### Input NON fattibili
-
-
-```ts
-const prefix = 'mdi'
-const icon = 'file-word'
-const iconName = `${prefix}/${icon}`
-```
-
-### Formato selettore
-
-- lowercase
-- separatore tra parole: `-`
-- struttura `group/icon-name`
-
-### Casi librerie esterne
-
-- filename: `todo-IN-prendere_in_carico.svg`
-  => icon name `mgg/todo-in-prendere-in-carico`
 
 ---
 
 ## Config
 
-omnicon.config.js
+Place config file `iconsauce.config.js` in the root of your node project:
 
 ```js
 module.exports = {
   content: [
-    './node_modules/@maggioli-design-system/**/*.{js,jsx,ts,tsx}',
-    './pages/**/*.{html,htm}',
-    './fragments/**/*.{json}',
+    './static/**/*.{html,htm}',
+    './templates/**/*.{js,jsx,ts,tsx}',
+    './data/**/*.{json}',
     './layouts/**/*.{js}',
   ],
+  fontSize: '24px',
   plugin: {
-    require('@omnicon/material-google')({ prefix: 'gm' }),
-    require('@omnicon/mdi'),
-    require('@omnicon/mgg-icons-svg'),
+    require('@iconsauce/plugin-material-design-icons-updated'),
   }
 }
 ```
