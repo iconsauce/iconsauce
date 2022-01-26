@@ -12,10 +12,12 @@ const occurrences = async (config, files) => {
     })
     for (pluginItem of config.plugin) {
       const selectors = fileContent.match(pluginItem.regex.code)
-      for (selector of selectors) {
-        filesMap[selector] = file
+      if (selectors !== null) {
+        for (selector of selectors) {
+          filesMap[selector] = file
+        }
+        inputIcons = [...new Set([...inputIcons, ...selectors])]
       }
-      inputIcons = [...new Set([...inputIcons, ...selectors])]
     }
   }
 
