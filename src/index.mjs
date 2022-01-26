@@ -7,11 +7,11 @@ import { icons } from './lib/icons.mjs'
 import { filter } from './lib/filter.mjs'
 import { fontBase64 } from './lib/font.mjs'
 import { css } from './lib/css.mjs'
-import { PROJECT_PATH, TEMP_CSS_PATH } from './lib/utils.mjs'
+import { PROJECT_NAME, PROJECT_PATH, TEMP_CSS_PATH } from './lib/utils.mjs'
 
 const decorate = config => {
   const defaultInfos = {
-    fontFamily: 'omnicon',
+    fontFamily: PROJECT_NAME,
   }
   return { ...config, ...defaultInfos }
 }
@@ -22,7 +22,7 @@ const loadConfig = async opts => {
     ignoreEmptySearchPlaces: false,
   }
   try {
-    const configFile = await lilconfig('omnicon', options).search()
+    const configFile = await lilconfig(PROJECT_NAME, options).search()
     return decorate({ ...configFile.config, ...opts.cli })
   } catch (error) {
     console.error(error)

@@ -4,10 +4,10 @@ import path from 'path'
 import chalk from 'chalk'
 import { mkdir, readFile } from 'fs/promises'
 import { createWriteStream, createReadStream } from 'fs'
-import { TEMP_PATH } from './utils.mjs'
+import { TEMP_PATH, PROJECT_NAME } from './utils.mjs'
 
 const TEMP_FONT_PATH = path.join(TEMP_PATH, 'font/')
-const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, '/omnicon.svg')
+const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, `/${PROJECT_NAME}.svg`)
 
 const fontBase64 = async (config, icons) => {
   await mkdir(TEMP_FONT_PATH, { recursive: true })
