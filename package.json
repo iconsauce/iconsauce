@@ -1,5 +1,5 @@
 {
-  "name": "omnicon",
+  "name": "omnicon-core",
   "version": "0.0.1",
   "description": "A build tool to include only the icons used in your code.",
   "main": "lib/index.js",
