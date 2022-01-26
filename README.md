@@ -3,6 +3,8 @@ An incremental build tool to include only the icons used in your code and.
 
 ### Input Examples
 
+In this example you have all the **almost 7.000** Material Design Icons from module `material-design-icons-updated` but you'll be able to include only the icons you effectively use inside your code:
+
 ```jsx
 const Component = () => {
 
