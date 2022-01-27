@@ -3,10 +3,10 @@ import chalk from 'chalk'
 import { Config } from '../interface/config'
 import { PathLike } from 'fs'
 
-const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurrences: String[], map: Map<String, PathLike> }>  => {
+const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurrences: string[], map: Map<string, PathLike> }>  => {
   let pluginItem
-  let inputIcons: String[] = new Array()
-  const filesMap: Map<String, PathLike> = new Map()
+  let inputIcons: string[] = new Array()
+  const filesMap: Map<string, PathLike> = new Map()
   let selector
 
   for (const file of files) {

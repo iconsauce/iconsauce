@@ -1,5 +1,5 @@
 import arg from 'arg'
-import { build } from './index.mjs'
+import { build } from './index'
 
 let configPath = './iconsauce.config.js'
 
@@ -24,10 +24,13 @@ if (args['--skip-warnings'] === undefined) {
   args['--skip-warnings'] = true
 }
 
-await build({
+build({
   configPath,
   cli: {
     verbose: args['--verbose'],
     skipWarnings: args['--skip-warnings'],
   },
+}).catch(error => {
+  throw new Error(error)
 })
+

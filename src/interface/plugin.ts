@@ -1,9 +1,11 @@
+import { PathLike } from "fs";
+
 export interface Plugin {
-  prefix: String
+  prefix: string
   regex: {
     code: RegExp
     lib: RegExp
   }
-  seletor: [Function: String]
-  path: String
+  selector: (pathIcon: RegExpMatchArray) => string
+  path: PathLike
 }

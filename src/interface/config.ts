@@ -1,10 +1,10 @@
 import { Plugin } from "./plugin";
 
 export interface Config {
-  content: String[]
-  fontSize: String
-  fontFamily: String
+  content: string[]
+  fontSize: string
+  fontFamily: string
   plugin: Plugin[]
-  verbose: Boolean
-  skipWarning: Boolean
+  verbose: boolean
+  skipWarning: boolean
 }

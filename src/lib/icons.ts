@@ -1,29 +1,33 @@
 import fg from 'fast-glob'
 import chalk from 'chalk'
+import { Plugin } from '../interface/plugin'
+import { Config } from '../interface/config'
+import { PathLike } from 'fs'
 
-const dictionary = (plugin, icons) => {
-  const iconsDictionary = {}
+const dictionary = (plugin: Plugin, icons: PathLike[]) => {
+  const iconsDictionary: Map<string, PathLike> = new Map()
   let icon
   for (icon of icons) {
-    const iconPath = icon.match(plugin.regex.lib)
-    iconsDictionary[plugin.selector(iconPath).toLowerCase()] = icon
+    const iconPath = icon.toString().match(plugin.regex.lib) as RegExpMatchArray
+    iconsDictionary.set(plugin.selector(iconPath).toLowerCase(),icon)
   }
   return iconsDictionary
 }
 
-const icons = async config => {
+const icons = async (config: Config): Promise<Map<string, PathLike>> => {
   let pluginItem
-  let icons = []
-  let iconsDictionary = {}
+  let icons: PathLike[] = []
+  let iconsDictionary: Map<string, PathLike> = new Map()
   for (pluginItem of config.plugin) {
-    const entries = await fg(pluginItem.path, { dot: true })
+    const entries = await fg(pluginItem.path.toString(), { dot: true })
     icons = [...icons, ...entries]
     const newIcons = dictionary(pluginItem, icons)
-    iconsDictionary = { ...iconsDictionary, ...newIcons }
+    iconsDictionary = new Map({ ...iconsDictionary, ...newIcons })
   }
   if (config.verbose) {
     console.info(`Found ${chalk.green(Object.keys(iconsDictionary).length)} icons from ${chalk.green(config.plugin.length)} ${config.plugin.length === 1 ? 'library' : 'libraries'}`)
   }
+  console.log(iconsDictionary)
   return iconsDictionary
 }
 

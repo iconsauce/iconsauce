@@ -2,9 +2,9 @@
   "name": "@iconsauce/core",
   "version": "0.0.1",
   "description": "A build tool to include only the icons used in your code.",
-  "main": "src/index.mjs",
+  "main": "src/index.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs --dts --external chalk && mv dist lib",
+    "build": "tsup src/cli.ts src/index.ts --format cjs --dts && rm -r lib && mv dist lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "arg": "^5.0.1",
-    "chalk": "5.0.0",
+    "chalk": "4.0.0",
     "fast-glob": "^3.2.11",
     "handlebars": "^4.7.7",
     "lilconfig": "2.0.4",
@@ -28,14 +28,15 @@
     "@types/debug": "^4.1.5",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.6.1",
-    "ts-jest": "^27.0.1",
-    "tsup": "^4.11.1",
-    "typescript": "^4.3.2",
+    "@types/svg2ttf": "^5.0.1",
+    "@types/svgicons2svgfont": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.7.0",
     "material-design-icons-updated": "^7.0.0",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "tsup": "^4.11.1",
+    "typescript": "^4.3.2"
   },
   "keywords": [
     "build",

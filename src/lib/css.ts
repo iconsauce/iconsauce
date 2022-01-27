@@ -1,3 +1,4 @@
+import { PathLike } from 'fs'
 import handlebars from 'handlebars'
 import { Config } from '../interface/config'
 
@@ -20,7 +21,7 @@ const template = handlebars.compile(`
 {{/each}}
 `)
 
-const css = async (config: Config, base64font: String, dictionary: Map<String, String>): Promise<String> => {
+const css = async (config: Config, base64font: string, dictionary: Map<string, PathLike>): Promise<string> => {
   const prefixes = []
   let plugin
   for (plugin of config.plugin) {
@@ -37,11 +38,11 @@ const css = async (config: Config, base64font: String, dictionary: Map<String, S
   })
 }
 
-const sanitize = (dictionary: Map<String, String>): Map<String, String> => {
-  const sanitizedDictionary : Map<String, String> = new Map()
+const sanitize = (dictionary: Map<string, PathLike>): Map<string, string> => {
+  const sanitizedDictionary : Map<string, string> = new Map()
 
   for (const key of dictionary.keys()) {
-    sanitizedDictionary.set(key.replace(/\//g, '\\/'), '\\'+ dictionary.get(key)?.codePointAt(0)?.toString(16))
+    sanitizedDictionary.set(key.replace(/\//g, '\\/'), '\\'+ dictionary.get(key)?.toString().codePointAt(0)?.toString(16))
   }
   return sanitizedDictionary
 }
