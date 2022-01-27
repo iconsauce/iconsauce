@@ -1,20 +1,27 @@
 import { readFile } from 'fs/promises'
 import chalk from 'chalk'
+import { Config } from '../interface/config'
+import { PathLike } from 'fs'
 
-const occurrences = async (config, files) => {
-  let file, pluginItem
-  let inputIcons = []
-  const filesMap = {}
+const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurrences: String[], map: Map<String, PathLike> }>  => {
+  let pluginItem
+  let inputIcons: String[] = new Array()
+  const filesMap: Map<String, PathLike> = new Map()
   let selector
-  for (file of files) {
+
+  for (const file of files) {
     const fileContent = await readFile(file, 'utf8').catch(error => {
-      console.error(error)
+      throw new Error(chalk.red(error))
     })
     for (pluginItem of config.plugin) {
       const selectors = fileContent.match(pluginItem.regex.code)
       if (selectors !== null) {
         for (selector of selectors) {
-          filesMap[selector] = file
+          // if(!filesMap.get(selector)){
+          //   filesMap.set(selector, [])
+          // }
+          // filesMap.get(selector)?.push(file)
+          filesMap.set(selector, file)
         }
         inputIcons = [...new Set([...inputIcons, ...selectors])]
       }

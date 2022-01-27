@@ -1,4 +1,5 @@
 import handlebars from 'handlebars'
+import { Config } from '../interface/config'
 
 const template = handlebars.compile(`
 @font-face {
@@ -19,7 +20,7 @@ const template = handlebars.compile(`
 {{/each}}
 `)
 
-const css = async (config, base64font, dictionary) => {
+const css = async (config: Config, base64font: String, dictionary: Map<String, String>): Promise<String> => {
   const prefixes = []
   let plugin
   for (plugin of config.plugin) {
@@ -36,13 +37,15 @@ const css = async (config, base64font, dictionary) => {
   })
 }
 
-const sanitize = dictionary => {
-  const sanitizedDictionary = {}
-  for (const key of Object.keys(dictionary)) {
-    sanitizedDictionary[key.replace(/\//g, '\\/')] = '\\' + dictionary[key].codePointAt(0).toString(16)
+const sanitize = (dictionary: Map<String, String>): Map<String, String> => {
+  const sanitizedDictionary : Map<String, String> = new Map()
+
+  for (const key of dictionary.keys()) {
+    sanitizedDictionary.set(key.replace(/\//g, '\\/'), '\\'+ dictionary.get(key)?.codePointAt(0)?.toString(16))
   }
   return sanitizedDictionary
 }
+
 export {
   css,
 }

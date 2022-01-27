@@ -4,7 +4,7 @@ import path from 'path'
 import chalk from 'chalk'
 import { mkdir, readFile } from 'fs/promises'
 import { createWriteStream, createReadStream } from 'fs'
-import { TEMP_PATH, PROJECT_NAME } from './utils.mjs'
+import { TEMP_PATH, PROJECT_NAME } from './utils.js'
 
 const TEMP_FONT_PATH = path.join(TEMP_PATH, 'font/')
 const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, `/${PROJECT_NAME}.svg`)

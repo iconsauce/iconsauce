@@ -2,11 +2,11 @@ import fg from 'fast-glob'
 import chalk from 'chalk'
 import { readFile, writeFile } from 'fs/promises'
 import { lilconfig } from 'lilconfig'
-import { occurrences } from './lib/occurrences.mjs'
-import { icons } from './lib/icons.js'
-import { filter } from './lib/filter.ts/index.js'
+import { occurrences } from './lib/occurrences'
+import { icons } from './lib/icons'
+import { filter } from './lib/filter.js'
 import { fontBase64 } from './lib/font.mjs'
-import { css } from './lib/css.mjs'
+import { css } from './lib/css.js'
 import { PROJECT_NAME, PROJECT_PATH, TEMP_CSS_PATH } from './lib/utils.js'
 
 const decorate = config => {
@@ -37,7 +37,7 @@ const build = async opts => {
   }
   const config = await loadConfig(opts)
   const iconDictionary = await icons(config)
-  const files = await fg(config.content, { dot: true })
+  const files = await fg(config.content)
   const selectors = await occurrences(config, files)
   const iconList = filter(config, iconDictionary, selectors)
   const { base64font, dictionary } = await fontBase64(config, iconList)

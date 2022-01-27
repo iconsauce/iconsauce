@@ -5,7 +5,8 @@
   },
   "extends": [
     "eslint:recommended",
-    "standard"
+    "standard",
+    "plugin:typescript/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": "latest",
