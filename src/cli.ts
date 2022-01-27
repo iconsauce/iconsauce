@@ -1,4 +1,5 @@
 import arg from 'arg'
+import chalk from 'chalk'
 import { build } from './index'
 
 let configPath = './iconsauce.config.js'
@@ -31,6 +32,5 @@ build({
     skipWarnings: args['--skip-warnings'],
   },
 }).catch(error => {
-  throw new Error(error)
+  throw new Error(chalk.red(error))
 })
-
