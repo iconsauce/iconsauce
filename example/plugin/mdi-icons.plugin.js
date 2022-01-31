@@ -1,4 +1,5 @@
-const path = require('path')
+const { dirname } = require('path')
+
 module.exports = {
   prefix: 'mdi',
   regex: {
@@ -6,5 +7,5 @@ module.exports = {
     lib: /([@[a-zA-Z_\-\/]+\/([0-9a-zA-Z_-]+)\.svg)/,
   },
   selector: path => `mdi/${path[2].replace(/[_]+/g, '-')}`,
-  path: `${path.dirname(require.resolve('@mdi/svg/package.json'))}/**/*.svg`,
+  path: `${dirname(require.resolve('@mdi/svg/package.json'))}/**/*.svg`,
 }

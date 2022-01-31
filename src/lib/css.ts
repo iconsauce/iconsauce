@@ -1,5 +1,5 @@
 import { PathLike } from 'fs'
-import handlebars from 'handlebars'
+import handlebars, { HelperOptions } from 'handlebars'
 import { Config } from '../interface/config'
 
 const template = handlebars.compile(`
@@ -16,37 +16,40 @@ const template = handlebars.compile(`
   font-size: {{fontSize}};
   font-style: normal;
 }
-{{#each selectors}}
-.{{@key}}::before { content: "{{this}}"; }
-{{/each}}
+
+{{#eachInMap selectors}}
+{{iconselector key value }}
+{{/eachInMap}}
+
 `)
 
-const css = async (config: Config, base64font: string, dictionary: Map<string, PathLike>): Promise<string> => {
+handlebars.registerHelper( 'iconselector', (key: string, value: string) => {
+  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.toString().codePointAt(0)?.toString(16) as string}"}`)
+})
+
+handlebars.registerHelper( 'eachInMap', (map: Map<string, PathLike>, block: HelperOptions ) => {
+  let out = ''
+  for (const key of map.keys()){
+    out += block.fn({ key, value: map.get(key) })
+  }
+  return out
+})
+
+const css = (config: Config, base64font: string, dictionary: Map<string, PathLike>): string => {
   const prefixes = []
   let plugin
   for (plugin of config.plugin) {
     prefixes.push(plugin.prefix)
   }
-  const sanitizedDictionary = sanitize(dictionary)
 
   return template({
     fontBase64: base64font,
     classPrefixes: prefixes,
     fontFamily: config.fontFamily,
     fontSize: config.fontSize,
-    selectors: sanitizedDictionary,
+    selectors: dictionary,
   })
 }
-
-const sanitize = (dictionary: Map<string, PathLike>): Map<string, string> => {
-  const sanitizedDictionary : Map<string, string> = new Map()
-
-  for (const key of dictionary.keys()) {
-    sanitizedDictionary.set(key.replace(/\//g, '\\/'), '\\'+ dictionary.get(key)?.toString().codePointAt(0)?.toString(16))
-  }
-  return sanitizedDictionary
-}
-
 export {
   css,
 }

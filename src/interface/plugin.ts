@@ -1,4 +1,4 @@
-import { PathLike } from "fs";
+import { PathLike } from 'fs'
 
 export interface Plugin {
   prefix: string

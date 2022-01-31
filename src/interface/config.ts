@@ -1,4 +1,4 @@
-import { Plugin } from "./plugin";
+import { Plugin } from './plugin'
 
 export interface Config {
   content: string[]

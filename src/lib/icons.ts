@@ -9,7 +9,7 @@ const dictionary = (plugin: Plugin, icons: PathLike[]) => {
   let icon
   for (icon of icons) {
     const iconPath = icon.toString().match(plugin.regex.lib) as RegExpMatchArray
-    iconsDictionary.set(plugin.selector(iconPath).toLowerCase(),icon)
+    iconsDictionary.set(plugin.selector(iconPath).toLowerCase(), icon)
   }
   return iconsDictionary
 }
@@ -22,12 +22,11 @@ const icons = async (config: Config): Promise<Map<string, PathLike>> => {
     const entries = await fg(pluginItem.path.toString(), { dot: true })
     icons = [...icons, ...entries]
     const newIcons = dictionary(pluginItem, icons)
-    iconsDictionary = new Map({ ...iconsDictionary, ...newIcons })
+    iconsDictionary = new Map([ ...iconsDictionary, ...newIcons ])
   }
   if (config.verbose) {
     console.info(`Found ${chalk.green(Object.keys(iconsDictionary).length)} icons from ${chalk.green(config.plugin.length)} ${config.plugin.length === 1 ? 'library' : 'libraries'}`)
   }
-  console.log(iconsDictionary)
   return iconsDictionary
 }
 

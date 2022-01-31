@@ -3,9 +3,9 @@ import chalk from 'chalk'
 import { Config } from '../interface/config'
 import { PathLike } from 'fs'
 
-const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurrences: string[], map: Map<string, PathLike> }>  => {
+const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurrences: string[], map: Map<string, PathLike> }> => {
   let pluginItem
-  let inputIcons: string[] = new Array()
+  let inputIcons: string[] = []
   const filesMap: Map<string, PathLike> = new Map()
   let selector
 
@@ -17,10 +17,6 @@ const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurre
       const selectors = fileContent.match(pluginItem.regex.code)
       if (selectors !== null) {
         for (selector of selectors) {
-          // if(!filesMap.get(selector)){
-          //   filesMap.set(selector, [])
-          // }
-          // filesMap.get(selector)?.push(file)
           filesMap.set(selector, file)
         }
         inputIcons = [...new Set([...inputIcons, ...selectors])]

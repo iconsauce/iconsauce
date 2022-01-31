@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "esnext",
+    "module": "commonjs",
     "lib": ["esnext"],
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
     "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "outDir": "./lib",
-    "skipLibCheck": true,
+    "removeComments": true,
+    "outDir": "lib",
+    "sourceMap": true
   },
   "include": [
     "src",
