@@ -1,12 +1,11 @@
+import chalk from 'chalk'
+import { createReadStream, createWriteStream, PathLike, ReadStream } from 'fs'
+import { mkdir, readFile } from 'fs/promises'
+import path from 'path'
 import svg2ttf from 'svg2ttf'
 import SVGIcons2SVGFontStream from 'svgicons2svgfont'
-import path from 'path'
-import chalk from 'chalk'
-import { mkdir, readFile } from 'fs/promises'
-import { createWriteStream, createReadStream, PathLike, ReadStream } from 'fs'
-import { TEMP_PATH, PROJECT_NAME } from './utils.js'
 import { Config } from '../interface/config.js'
-import { Exception } from 'handlebars'
+import { PROJECT_NAME, TEMP_PATH } from './utils.js'
 
 interface Glyph extends ReadStream{
   metadata: {
@@ -23,10 +22,11 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
     .catch(console.error)
   let startUnicode = 0xea01
 
-  if (icons.size === 0) {
-    throw new Exception('icons empty')
-  }
-  return new Promise(resolve => {
+  return new Promise(( resolve, reject) => {
+    if (icons.size === 0) {
+      reject('icons empty')
+      return
+    }
     const fontStream = new SVGIcons2SVGFontStream({
       fontName: config.fontFamily,
     })
