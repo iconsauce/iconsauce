@@ -25,7 +25,7 @@ const icons = async (config: Config): Promise<Map<string, PathLike>> => {
     iconsDictionary = new Map([ ...iconsDictionary, ...newIcons ])
   }
   if (config.verbose) {
-    console.info(`Found ${chalk.green(Object.keys(iconsDictionary).length)} icons from ${chalk.green(config.plugin.length)} ${config.plugin.length === 1 ? 'library' : 'libraries'}`)
+    console.info(`Found ${chalk.green(iconsDictionary.size)} icons from ${chalk.green(config.plugin.length)} ${config.plugin.length === 1 ? 'library' : 'libraries'}`)
   }
   return iconsDictionary
 }
