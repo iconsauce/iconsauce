@@ -22,8 +22,8 @@ export class LoadConfig implements Config {
     this.fontFamily = defaultConfig.fontFamily
     this.fontSize = config.fontSize ?? defaultConfig.fontSize
     this.plugin = config.plugin ?? defaultConfig.plugin
-    this.verbose = verbose ?? defaultConfig.verbose
-    this.skipWarning = skipWarning ?? defaultConfig.skipWarning
+    this.verbose = config.verbose ?? verbose ?? defaultConfig.verbose
+    this.skipWarning = config.verbose ?? skipWarning ?? defaultConfig.skipWarning
   }
 }
 
