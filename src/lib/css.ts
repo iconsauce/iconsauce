@@ -2,14 +2,12 @@ import { PathLike } from 'fs'
 import handlebars, { HelperOptions } from 'handlebars'
 import { Config } from '../interface/config'
 
-const template = handlebars.compile(`
-@font-face {
+const template = handlebars.compile(`@font-face {
   font-family: "{{fontFamily}}";
   src: url(data:font/truetype;charset=utf-8;base64,{{fontBase64}});
 }
-{{#each classPrefixes}}
-[class^="{{this}}/"],
-{{#if @last}}[class*=" {{this}}/"]{{else}}[class*=" {{this}}/"],{{/if}}{{/each}} {
+
+{{#each classPrefixes}}[class^="{{this}}/"], [class*=" {{this}}/"]{{#if @last}}{{else}}, {{/if}}{{/each}} {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: "{{fontFamily}}" !important;
@@ -49,6 +47,7 @@ const css = (config: Config, base64font: string, dictionary: Map<string, PathLik
     selectors: dictionary,
   })
 }
+
 export {
   css,
 }
