@@ -16,7 +16,7 @@ export class LoadConfig implements Config {
     const config = _loadConfig(configPath)
 
     if (config.content.length === 0) {
-      throw new Error('missing content')
+      throw new Error(chalk.red('Missing required "content" property'))
     }
     this.content = config.content
     this.fontFamily = defaultConfig.fontFamily
