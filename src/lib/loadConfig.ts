@@ -1,8 +1,8 @@
+import chalk from 'chalk'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
 import { Plugin } from '../interface/plugin'
-import { defaultConfig, DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
-
+import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH, defaultConfig } from './utils'
 
 export class LoadConfig implements Config {
   content: string[]
@@ -35,6 +35,6 @@ const _loadConfig = (configPath?: string) : Config => {
   try {
     return lilconfigSync(PROJECT_NAME, options).load(configPath ?? DEFAULT_CONFIG_PATH)?.config as Config
   } catch (error) {
-    throw new Error('config file not found')
+    throw new Error(chalk.red(error))
   }
 }
