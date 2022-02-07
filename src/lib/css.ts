@@ -20,7 +20,6 @@ const template = handlebars.compile(`
 {{#eachInMap selectors}}
 {{iconselector key value }}
 {{/eachInMap}}
-
 `)
 
 handlebars.registerHelper( 'iconselector', (key: string, value: string) => {
@@ -36,10 +35,10 @@ handlebars.registerHelper( 'eachInMap', (map: Map<string, PathLike>, block: Help
 })
 
 const css = (config: Config, base64font: string, dictionary: Map<string, PathLike>): string => {
-  const prefixes = []
-  let plugin
-  for (plugin of config.plugin) {
-    prefixes.push(plugin.prefix)
+  const prefixes = new Set()
+
+  for (const key of dictionary.keys()) {
+    prefixes.add(key.toString().split('/')[0])
   }
 
   return template({
