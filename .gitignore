@@ -1,4 +1,7 @@
-/node_modules
-/.temp
 .DS_Store
+.temp
+/.vscode
+/build
+/coverage
 /lib
+/node_modules
