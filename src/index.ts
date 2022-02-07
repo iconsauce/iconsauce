@@ -2,16 +2,17 @@ import fg from 'fast-glob'
 import chalk from 'chalk'
 import { occurrences } from './lib/occurrences'
 import { icons } from './lib/icons'
-import { filter } from './lib/filter.js'
+import { filter } from './lib/filter'
+import { PROJECT_NAME } from './lib/utils'
 import { fontBase64 } from './lib/font'
-import { css } from './lib/css.js'
+import { css } from './lib/css'
 import { Config } from './interface/config'
 import { LoadConfig } from './lib/loadConfig'
 
 const build = async (configuration?: Config): Promise<string> => {
   const config = configuration ?? new LoadConfig()
 
-  console.info(`${chalk.cyan(process.env.npm_package_name)} ${process.env.npm_package_version as string}`)
+  console.info(`${chalk.cyan(PROJECT_NAME)} ${process.env.npm_package_version as string}`)
   if (config.verbose) {
     console.info('Verbose mode enabled')
   }
