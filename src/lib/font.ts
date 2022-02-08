@@ -7,7 +7,7 @@ import SVGIcons2SVGFontStream from 'svgicons2svgfont'
 import { Config } from '../interface/config.js'
 import { PROJECT_NAME, TEMP_PATH } from './utils.js'
 
-interface Glyph extends ReadStream{
+interface Glyph extends ReadStream {
   metadata: {
     name: string
     unicode: [string]
