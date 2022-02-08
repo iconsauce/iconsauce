@@ -1,14 +1,6 @@
-import path from 'path'
-import { occurrences } from '../../src/lib/occurrences'
-import { defaultConfig } from '../../src/lib/utils'
-
-const files = [
-  path.resolve(__dirname, './files/component-gm.tsx'),
-  path.resolve(__dirname, './files/component-mdi.tsx'),
-  path.resolve(__dirname, './files/component-mgg.tsx'),
-  path.resolve(__dirname, './files/component.tsx'),
-  path.resolve(__dirname, './files/variants.ts'),
-]
+import { occurrences } from '../src/lib/occurrences'
+import { defaultConfig } from '../src/lib/utils'
+import files from './fixures/files'
 
 describe('Occurrences', () => {
   test('Check the selectors are properly loaded from source files', async () => {
