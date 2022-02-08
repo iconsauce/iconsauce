@@ -8,4 +8,9 @@ describe('Filter', () => {
   test('Check it returns a filtered map of selected icons', () => {
     expect(filter(defaultConfig, dictionary, selectors)).toEqual(filteredDictionary)
   })
+
+  test('Check the errors are thrown as expected', () => {
+    defaultConfig.skipWarning = false
+    return expect(() => filter(defaultConfig, dictionary, selectors)).toThrow(Error)
+  })
 })
