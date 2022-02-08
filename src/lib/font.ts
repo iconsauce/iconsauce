@@ -4,8 +4,8 @@ import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
 import svg2ttf from 'svg2ttf'
 import SVGIcons2SVGFontStream from 'svgicons2svgfont'
-import { Config } from '../interface/config.js'
-import { PROJECT_NAME, TEMP_PATH } from './utils.js'
+import { Config } from '../interface/config'
+import { PROJECT_NAME, TEMP_PATH } from './utils'
 
 interface Glyph extends ReadStream {
   metadata: {
