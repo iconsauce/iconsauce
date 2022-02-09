@@ -11,6 +11,6 @@ describe('Filter', () => {
 
   test('Check the errors are thrown as expected', () => {
     defaultConfig.skipWarning = false
-    return expect(() => filter(defaultConfig, dictionary, selectors)).toThrow(Error)
+    expect(() => filter(defaultConfig, dictionary, selectors)).toThrow(Error)
   })
 })
