@@ -1,8 +1,8 @@
 import { filter } from '../src/lib/filter'
 import { defaultConfig } from '../src/lib/utils'
-import filteredDictionary from './fixures/filtered-dictionary'
-import dictionary from './fixures/dictionary'
-import selectors from './fixures/selectors'
+import filteredDictionary from './fixtures/filtered-dictionary'
+import dictionary from './fixtures/dictionary'
+import selectors from './fixtures/selectors'
 
 describe('Filter', () => {
   test('Check it returns a filtered map of selected icons', () => {

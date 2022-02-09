@@ -1,7 +1,7 @@
 import { css } from '../src/lib/css'
 import { defaultConfig } from '../src/lib/utils'
-import dictionary from './fixures/dictionary'
-import cssFont from './fixures/css-font'
+import dictionary from './fixtures/dictionary'
+import cssFont from './fixtures/css-font'
 
 describe('CSS', () => {
   test('Check the CSS generated is equal to the mock', () => {

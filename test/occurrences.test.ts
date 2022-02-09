@@ -1,7 +1,7 @@
 import { PathLike } from 'fs'
 import { occurrences } from '../src/lib/occurrences'
 import { defaultConfig } from '../src/lib/utils'
-import files from './fixures/files'
+import files from './fixtures/files'
 
 defaultConfig.verbose = true
 
