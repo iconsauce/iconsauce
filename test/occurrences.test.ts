@@ -1,7 +1,6 @@
 import { PathLike } from 'fs'
 import { occurrences } from '../src/lib/occurrences'
 import { defaultConfig } from '../src/lib/utils'
-import chalk from 'chalk'
 import files from './fixures/files'
 
 defaultConfig.verbose = true
@@ -17,11 +16,7 @@ describe('Occurrences', () => {
     expect(new Set(data.occurrences)).toContain('gm/filled/non-existing-selector')
   })
 
-  // test('Check the errors are thrown as expected', async () => {
-  //   try {
-  //     await occurrences(defaultConfig, ['non/exisising/file.tsx'])
-  //   } catch (error) {
-  //     expect(error).toMatch(/Error/)
-  //   }
-  // })
+  test('Check the errors are thrown as expected', async () => {
+    await expect(occurrences(defaultConfig, ['non/exisising/file.tsx'])).rejects.toThrow(Error)
+  })
 })
