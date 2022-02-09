@@ -24,9 +24,23 @@ const occurrences = [
   'gm/filled/warning',
 ]
 
+const occurrencesCleaned = [
+  'gm/filled/accessible-forward',
+  'gm/filled/add-chart',
+  'gm/filled/close',
+  'gm/filled/error',
+  'gm/filled/info',
+  'gm/filled/remove-shopping-cart',
+  'gm/filled/vpn-key',
+  'gm/filled/warning',
+]
+
 const selectors = {
   occurrences,
   map,
 }
 
 export default selectors
+export {
+  occurrencesCleaned,
+}
