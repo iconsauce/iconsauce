@@ -24,7 +24,7 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
 
   return new Promise(( resolve, reject) => {
     if (icons.size === 0) {
-      reject('icons empty')
+      reject(chalk.red('Error: Icons map cannot be empty'))
       return
     }
     const fontStream = new SVGIcons2SVGFontStream({

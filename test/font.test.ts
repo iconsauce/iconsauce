@@ -13,6 +13,12 @@ describe('Font', () => {
         console.error(error)
       })
   })
+  test('Check it throw error cause icons are empty', async () => {
+    return fontBase64(defaultConfig, new Map())
+      .catch(error => {
+        expect(error).toMatch('Error: Icons map cannot be empty')
+      })
+  })
   test('Check the dictionary generated', async () => {
     return fontBase64(defaultConfig, filteredDictionary)
       .then(data => {
