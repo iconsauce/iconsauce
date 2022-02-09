@@ -31,5 +31,6 @@ const icons = async (config: Config): Promise<Map<string, PathLike>> => {
 }
 
 export {
+  dictionary,
   icons,
 }
