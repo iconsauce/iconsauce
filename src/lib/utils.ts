@@ -6,7 +6,7 @@ import { mggPlugin } from '../plugin/mgg-icons.plugin'
 
 const PROJECT_NAME = 'iconsauce'
 const PROJECT_PATH = path.join('./')
-const TEMP_PATH = path.join(PROJECT_PATH, '.temp')
+const TEMP_PATH = path.resolve(PROJECT_PATH, '.temp')
 const TEMP_CSS_PATH = path.join(TEMP_PATH, `${PROJECT_NAME}.css`)
 const DEFAULT_CONFIG_PATH = path.join(PROJECT_PATH, './iconsauce.config.js')
 
