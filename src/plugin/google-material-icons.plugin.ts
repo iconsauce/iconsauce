@@ -4,7 +4,7 @@ import { Plugin } from '../interface/plugin'
 export const gmPlugin: Plugin = {
   prefix: 'gm',
   regex: {
-    code: /(gm)(\/{1}[a-z-]+){1,2}/gm,
+    code: /(gm)(\/{1}[0-9a-z-]+){1,2}/gm,
     lib: /(([a-zA-Z_\-/]+\/)(filled|outline|round|sharp)[a-zA-Z_\-/]+\/ic_([0-9a-zA-Z_]+)_24px\.svg)/,
   },
   selector: (path: RegExpMatchArray) => `gm/${path[3]}/${path[4].replace(/[_]+/g, '-')}`,
