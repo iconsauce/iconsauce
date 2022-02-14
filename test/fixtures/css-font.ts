@@ -4,7 +4,7 @@ const cssString = String.raw`:root {
 
 @font-face {
   font-family: "iconsauce";
-  src: url("data:font/truetype;charset=utf-8;base64,AABBCCDDEE=") format("truetype");
+  src: url("data:font/truetype;charset=utf-8;base64,AABBCCDDEE") format("truetype");
 }
 
 [class^="gm/"], [class*=" gm/"] {
