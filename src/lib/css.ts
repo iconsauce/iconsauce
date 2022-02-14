@@ -8,7 +8,7 @@ const template = handlebars.compile(`:root {
 
 @font-face {
   font-family: "{{fontFamily}}";
-  src: url(data:font/truetype;charset=utf-8;base64,{{fontBase64}});
+  src: url("data:font/truetype;charset=utf-8;base64,{{fontBase64}}=") format("truetype");
 }
 
 {{#each classPrefixes}}[class^="{{this}}/"], [class*=" {{this}}/"]{{#if @last}}{{else}}, {{/if}}{{/each}} {

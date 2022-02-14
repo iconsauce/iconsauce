@@ -1,6 +1,6 @@
 {
   "name": "@iconsauce/core",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "A build tool to include only the icons used in your code.",
   "main": "lib/index.js",
   "scripts": {
