@@ -2,7 +2,20 @@ import chalk from 'chalk'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
 import { Plugin } from '../interface/plugin'
-import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH, defaultConfig } from './utils'
+import { gmPlugin } from '../plugin/google-material-icons.plugin'
+import { mdiPlugin } from '../plugin/mdi-icons.plugin'
+import { mggPlugin } from '../plugin/mgg-icons.plugin'
+import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
+
+
+const defaultConfig: Config = {
+  content : [],
+  fontSize : '24px',
+  fontFamily : 'iconsauce',
+  plugin : [ gmPlugin, mdiPlugin, mggPlugin ],
+  verbose : false,
+  skipWarning : true,
+}
 
 export class LoadConfig implements Config {
   content: string[]
