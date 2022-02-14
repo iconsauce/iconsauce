@@ -28,8 +28,15 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
       return
     }
     const fontStream = new SVGIcons2SVGFontStream({
+      centerHorizontally: false,
+      centerVertically: false,
+      fixedWidth: true,
+      fontHeight: 2048,
       fontName: config.fontFamily,
+      fontStyle: 'normal',
+      fontWeight: '400',
       log: () => null,
+      normalize: false,
     })
 
     const dictionary: Map<string, PathLike> = new Map()
