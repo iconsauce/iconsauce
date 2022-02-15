@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
-import { Plugin } from '../interface/plugin'
+import { IconsaucePlugin } from '../interface/plugin'
 import { gmPlugin } from '../plugin/google-material-icons.plugin'
 import { mdiPlugin } from '../plugin/mdi-icons.plugin'
 import { mggPlugin } from '../plugin/mgg-icons.plugin'
@@ -21,7 +21,7 @@ export class LoadConfig implements Config {
   content: string[]
   fontSize: string
   fontFamily: string
-  plugin: Plugin[]
+  plugin: IconsaucePlugin[]
   verbose: boolean
   skipWarning: boolean
 

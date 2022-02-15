@@ -1,6 +1,6 @@
 import { PathLike } from 'fs'
 
-export interface Plugin {
+export interface IconsaucePlugin {
   prefix: string
   regex: {
     code: RegExp

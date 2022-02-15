@@ -1,7 +1,7 @@
 import { dirname } from 'path'
-import { Plugin } from '../interface/plugin'
+import { IconsaucePlugin } from '../interface/plugin'
 
-export const gmPlugin: Plugin = {
+export const gmPlugin: IconsaucePlugin = {
   prefix: 'gm',
   regex: {
     code: /(gm)(\/{1}[0-9a-z-]+){1,2}/gm,

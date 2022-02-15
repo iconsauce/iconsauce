@@ -1,10 +1,10 @@
 import fg from 'fast-glob'
 import chalk from 'chalk'
-import { Plugin } from '../interface/plugin'
+import { IconsaucePlugin } from '../interface/plugin'
 import { Config } from '../interface/config'
 import { PathLike } from 'fs'
 
-const dictionary = (plugin: Plugin, icons: PathLike[]) => {
+const dictionary = (plugin: IconsaucePlugin, icons: PathLike[]) => {
   const iconsDictionary: Map<string, PathLike> = new Map()
   let icon
   for (icon of icons) {

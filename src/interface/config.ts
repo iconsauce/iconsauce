@@ -1,10 +1,10 @@
-import { Plugin } from './plugin'
+import { IconsaucePlugin } from './plugin'
 
 export interface Config {
   content: string[]
   fontSize: string
   fontFamily: string
-  plugin: Plugin[]
+  plugin: IconsaucePlugin[]
   verbose: boolean
   skipWarning: boolean
 }
