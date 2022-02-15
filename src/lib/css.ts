@@ -13,7 +13,8 @@ const template = handlebars.compile(`@font-face {
   font-family: "{{fontFamily}}" !important;
   font-size: {{fontSize}};
   font-style: normal;
-  text-align: center;
+  font-weight: 400;
+  line-height: 1;
 }
 
 {{#eachInMap selectors}}

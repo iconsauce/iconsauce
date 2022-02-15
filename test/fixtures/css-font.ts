@@ -9,7 +9,8 @@ const cssString = String.raw`@font-face {
   font-family: "iconsauce" !important;
   font-size: 24px;
   font-style: normal;
-  text-align: center;
+  font-weight: 400;
+  line-height: 1;
 }
 
 .gm\/filled\/10k::before { content: "\2f" }
