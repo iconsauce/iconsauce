@@ -58,7 +58,6 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
         .on('finish', () => {
           fontTottf().then(base64FontGenerated => {
             const base64font = base64FontGenerated.replaceAll(/[=]{1,}$/g, '')
-            console.log(base64font)
             resolve({ base64font, dictionary })
           }).catch(err => {
             console.log(err)
