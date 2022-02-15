@@ -56,7 +56,9 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
     fontStream
       .pipe(createWriteStream(TEMP_FONT_PATH_SVG)
         .on('finish', () => {
-          fontTottf().then(base64font => {
+          fontTottf().then(base64FontGenerated => {
+            const base64font = base64FontGenerated.replaceAll(/[=]{1,}$/g, '')
+            console.log(base64font)
             resolve({ base64font, dictionary })
           }).catch(err => {
             console.log(err)

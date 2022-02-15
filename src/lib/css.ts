@@ -4,7 +4,7 @@ import { Config } from '../interface/config'
 
 const template = handlebars.compile(`@font-face {
   font-family: "{{fontFamily}}";
-  src: url("data:font/truetype;charset=utf-8;base64,{{fontBase64}}") format("truetype");
+  src: url("data:font/truetype;charset=utf-8;base64,{{{fontBase64}}}") format("truetype");
 }
 
 {{#each classPrefixes}}[class^="{{this}}/"], [class*=" {{this}}/"]{{#if @last}}{{else}}, {{/if}}{{/each}} {
