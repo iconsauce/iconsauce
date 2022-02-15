@@ -3,8 +3,8 @@ import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
 import { IconsaucePlugin } from '../interface/plugin'
 import googleMaterialIconsPlugin from '@iconsauce/plugin-material-design-icons-updated'
-import { mdiPlugin } from '../plugin/mdi-icons.plugin'
-import { mggPlugin } from '../plugin/mgg-icons.plugin'
+import materialDesignIconsPlugin from '@iconsauce/plugin-mdi-svg'
+import maggioliIconsPlugin from '@iconsauce/plugin-mgg-icons'
 import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
 
 
@@ -14,8 +14,8 @@ const defaultConfig: Config = {
   fontFamily : 'iconsauce',
   plugin : [
     googleMaterialIconsPlugin,
-    mdiPlugin,
-    mggPlugin,
+    materialDesignIconsPlugin,
+    maggioliIconsPlugin,
   ],
   verbose : false,
   skipWarning : true,
