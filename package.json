@@ -1,13 +1,13 @@
 {
   "name": "@iconsauce/core",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "A build tool to include only the icons used in your code.",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run clean && tsc --declaration && npm run lib",
     "clean": "rm -rf ./build || true && rm -rf ./lib || true",
     "dev": "tsc --watch",
-    "example": "npm run build && cd example && node ./index.js && ../",
+    "example": "npm run build && cd example && node ./index.js",
     "lib": "cp -r ./build/src ./lib",
     "lint": "eslint --ignore-path .eslintignore",
     "test": "npm run build && jest"
