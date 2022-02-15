@@ -8,6 +8,7 @@ describe('Font', () => {
   test('Check the Base64 generated font', async () => {
     return fontBase64(configTest, filteredDictionary)
       .then(data => {
+        console.log(data.base64font)
         expect(data.base64font.length).toEqual(base64Font.length)
       }).catch(error => {
         console.error(error)

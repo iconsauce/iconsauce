@@ -2,11 +2,7 @@ import { PathLike } from 'fs'
 import handlebars, { HelperOptions } from 'handlebars'
 import { Config } from '../interface/config'
 
-const template = handlebars.compile(`:root {
-  --iconsauce-font-size: {{fontSize}};
-}
-
-@font-face {
+const template = handlebars.compile(`@font-face {
   font-family: "{{fontFamily}}";
   src: url("data:font/truetype;charset=utf-8;base64,{{fontBase64}}") format("truetype");
 }
@@ -15,10 +11,9 @@ const template = handlebars.compile(`:root {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: "{{fontFamily}}" !important;
-  font-size: var(--iconsauce-font-size);
+  font-size: {{fontSize}};
   font-style: normal;
   text-align: center;
-  width: var(--iconsauce-font-size);
 }
 
 {{#eachInMap selectors}}

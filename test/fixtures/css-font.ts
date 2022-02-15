@@ -1,8 +1,4 @@
-const cssString = String.raw`:root {
-  --iconsauce-font-size: 24px;
-}
-
-@font-face {
+const cssString = String.raw`@font-face {
   font-family: "iconsauce";
   src: url("data:font/truetype;charset=utf-8;base64,AABBCCDDEE") format("truetype");
 }
@@ -11,10 +7,9 @@ const cssString = String.raw`:root {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: "iconsauce" !important;
-  font-size: var(--iconsauce-font-size);
+  font-size: 24px;
   font-style: normal;
   text-align: center;
-  width: var(--iconsauce-font-size);
 }
 
 .gm\/filled\/10k::before { content: "\2f"}
