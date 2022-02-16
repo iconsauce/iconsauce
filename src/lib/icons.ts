@@ -1,6 +1,6 @@
 import fg from 'fast-glob'
 import chalk from 'chalk'
-import { IconsaucePlugin } from '../interface/plugin'
+import { IconsaucePlugin } from '@iconsauce/plugin'
 import { Config } from '../interface/config'
 import { PathLike } from 'fs'
 

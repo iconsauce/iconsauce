@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
-import { IconsaucePlugin } from '../interface/plugin'
+import { IconsaucePlugin } from '@iconsauce/plugin'
 import googleMaterialIconsPlugin from '@iconsauce/plugin-material-design-icons-updated'
 import materialDesignIconsPlugin from '@iconsauce/plugin-mdi-svg'
 import maggioliIconsPlugin from '@iconsauce/plugin-mgg-icons'

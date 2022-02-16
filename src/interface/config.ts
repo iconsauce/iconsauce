@@ -1,4 +1,4 @@
-import { IconsaucePlugin } from './plugin'
+import { IconsaucePlugin } from '@iconsauce/plugin'
 
 export interface Config {
   content: string[]

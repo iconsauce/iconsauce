@@ -3,8 +3,8 @@ module.exports = {
     './src/**/*.{tsx,ts}',
   ],
   plugin: [
-    require('../../src/plugin/google-material-icons.plugin'),
-    require('../../src/plugin/mgg-icons.plugin'),
-    require('../../src/plugin/mdi-icons.plugin'),
+    require('@iconsauce/plugin-material-design-icons-updated'),
+    require('@iconsauce/plugin-mdi-svg'),
+    require('@iconsauce/plugin-mgg-icons'),
   ],
 }
