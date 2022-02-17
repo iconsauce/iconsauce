@@ -2,9 +2,9 @@ import chalk from 'chalk'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
 import { IconsaucePlugin } from '@iconsauce/plugin'
-import googleMaterialIconsPlugin from '@iconsauce/plugin-material-design-icons-updated'
-import materialDesignIconsPlugin from '@iconsauce/plugin-mdi-svg'
-import maggioliIconsPlugin from '@iconsauce/plugin-mgg-icons'
+import { materialDesignIconsUpdatedPlugin } from '@iconsauce/material-design-icons-updated'
+import { mdiSvgPlugin } from '@iconsauce/mdi-svg'
+import { maggioliSvgIconsPlugin } from '@iconsauce/mgg-icons'
 import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
 
 
@@ -13,9 +13,9 @@ const defaultConfig: Config = {
   fontSize : '24px',
   fontFamily : 'iconsauce',
   plugin : [
-    googleMaterialIconsPlugin,
-    materialDesignIconsPlugin,
-    maggioliIconsPlugin,
+    materialDesignIconsUpdatedPlugin,
+    mdiSvgPlugin,
+    maggioliSvgIconsPlugin,
   ],
   verbose : false,
   skipWarning : true,
