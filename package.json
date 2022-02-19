@@ -1,7 +1,7 @@
 {
   "name": "@iconsauce/core",
   "version": "0.2.0",
-  "description": "A build tool to include only the icons used in your code.",
+  "description": "Includes only the SVG icons matched in your code and generates a CSS icon font set.",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc --declaration && npm run lib",

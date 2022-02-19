@@ -1,8 +1,8 @@
 # @iconsauce/core
 
-An incremental build tool to include only the SVG icons used in your code to a CSS with it's font embedded.
+Includes only the SVG icons matched in your code and generates a CSS icon font set.
 
-### Input Examples
+### Examples
 
 In this example you have all the **almost 7.000** [Google Material Design Icons](https://fonts.google.com/icons) collected by [material-design-icons-updated](https://github.com/stramel/material-design-icons-updated), but you'll be able to include only the icons you effectively use inside your code:
 
