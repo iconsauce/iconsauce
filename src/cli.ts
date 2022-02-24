@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import arg from 'arg'
 import { writeFile } from 'fs/promises'
 import { build } from './index'
@@ -22,7 +23,7 @@ if (args['--config']) {
 }
 
 if (args['--verbose'] === undefined) {
-  args['--verbose'] = true
+  args['--verbose'] = false
 }
 
 if (args['--skip-warnings'] === undefined) {
