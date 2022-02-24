@@ -6,5 +6,5 @@ export interface Config {
   fontFamily: string
   plugin: IconsaucePlugin[]
   verbose: boolean
-  skipWarning: boolean
+  skipWarnings: boolean
 }

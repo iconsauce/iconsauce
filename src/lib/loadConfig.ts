@@ -18,7 +18,7 @@ const defaultConfig: Config = {
     maggioliSvgIconsPlugin,
   ],
   verbose : false,
-  skipWarning : true,
+  skipWarnings : true,
 }
 
 export class LoadConfig implements Config {
@@ -27,9 +27,9 @@ export class LoadConfig implements Config {
   fontFamily: string
   plugin: IconsaucePlugin[]
   verbose: boolean
-  skipWarning: boolean
+  skipWarnings: boolean
 
-  constructor (configPath?: string, verbose?: boolean, skipWarning?: boolean ) {
+  constructor (configPath?: string, verbose?: boolean, skipWarnings?: boolean ) {
     const config = _loadConfig(configPath)
 
     if (config.content.length === 0) {
@@ -40,7 +40,7 @@ export class LoadConfig implements Config {
     this.fontSize = config.fontSize ?? defaultConfig.fontSize
     this.plugin = config.plugin ?? defaultConfig.plugin
     this.verbose = config.verbose ?? verbose ?? defaultConfig.verbose
-    this.skipWarning = config.verbose ?? skipWarning ?? defaultConfig.skipWarning
+    this.skipWarnings = config.verbose ?? skipWarnings ?? defaultConfig.skipWarnings
   }
 }
 

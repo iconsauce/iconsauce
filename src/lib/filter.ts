@@ -9,7 +9,7 @@ const filter = (config: Config, dictionary: Map<string, PathLike>, selectors: {o
     if (dictionary.get(occurrence) !== undefined) {
       filteredDictionary.set(occurrence, dictionary.get(occurrence) as string)
     } else {
-      if (config.skipWarning) {
+      if (config.skipWarnings) {
         console.info(`Warning: ${chalk.yellow(occurrence)} from ${chalk.blue(selectors.map.get(occurrence))} not found `)
       } else {
         throw Error(`${chalk.red(occurrence)} from ${chalk.blue(selectors.map.get(occurrence))} not found`)
