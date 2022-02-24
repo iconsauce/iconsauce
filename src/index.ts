@@ -24,7 +24,7 @@ const build = async (configuration?: Config): Promise<string> => {
   const iconList = filter(config, iconDictionary, selectors)
   if (iconList.size === 0) {
     if (config.verbose) {
-      console.info('Info: no icons were found, skipping iconsauce build.')
+      console.info('No icons found, skipping iconsauce build')
     }
     return ''
   }
