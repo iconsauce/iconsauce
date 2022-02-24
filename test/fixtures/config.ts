@@ -1,7 +1,7 @@
 import { Config } from '../../src/interface/config'
-import { materialDesignIconsUpdatedPlugin } from '@iconsauce/material-design-icons-updated'
-import { mdiSvgPlugin } from '@iconsauce/mdi-svg'
-import { maggioliSvgIconsPlugin } from '@iconsauce/mgg-icons'
+import materialDesignIconsUpdatedPlugin from '@iconsauce/material-design-icons-updated'
+import mdiSvgPlugin from '@iconsauce/mdi-svg'
+import maggioliSvgIconsPlugin from '@iconsauce/mgg-icons'
 
 export const configTest: Config = {
   content: [

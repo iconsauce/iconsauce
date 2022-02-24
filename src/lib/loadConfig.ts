@@ -2,9 +2,9 @@ import chalk from 'chalk'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
 import { IconsaucePlugin } from '@iconsauce/plugin'
-import { materialDesignIconsUpdatedPlugin } from '@iconsauce/material-design-icons-updated'
-import { mdiSvgPlugin } from '@iconsauce/mdi-svg'
-import { maggioliSvgIconsPlugin } from '@iconsauce/mgg-icons'
+import materialDesignIconsUpdatedPlugin from '@iconsauce/material-design-icons-updated'
+import mdiSvgPlugin from '@iconsauce/mdi-svg'
+import maggioliSvgIconsPlugin from '@iconsauce/mgg-icons'
 import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
 
 
