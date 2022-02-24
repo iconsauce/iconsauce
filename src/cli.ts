@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import arg from 'arg'
+import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
 import { build } from './index'
 import { LoadConfig } from './lib/loadConfig'
@@ -37,6 +38,6 @@ if (args['--output'] === undefined) {
 const config = new LoadConfig (configPath, args['--verbose'], args['--skip-warnings'])
 
 build( config).then((data: string) => {
-  writeFile(TEMP_CSS_PATH, data)
+  writeFile(args['--output'] as PathLike, data)
     .catch(console.error)
 }).catch(console.error)
