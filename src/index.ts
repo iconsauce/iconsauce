@@ -22,6 +22,12 @@ const build = async (configuration?: Config): Promise<string> => {
 
   const selectors = await occurrences(config, files)
   const iconList = filter(config, iconDictionary, selectors)
+  if (iconList.size === 0) {
+    if (config.verbose) {
+      console.info('Info: no icons were found, skipping iconsauce build.')
+    }
+    return ''
+  }
   const { base64font, dictionary } = await fontBase64(config, iconList)
   const cssData = css(config, base64font, dictionary)
 
