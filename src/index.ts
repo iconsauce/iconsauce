@@ -12,7 +12,8 @@ import { LoadConfig } from './lib/loadConfig'
 const build = async (configuration?: Config): Promise<string> => {
   const config = configuration ?? new LoadConfig()
 
-  console.info(`${chalk.cyan(PROJECT_NAME)} ${process.env.npm_package_version as string}`)
+  console.info(`${chalk.cyan(PROJECT_NAME)}`)
+
   if (config.verbose) {
     console.info('Verbose mode enabled')
   }
