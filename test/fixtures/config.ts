@@ -15,7 +15,7 @@ export const configTest: Config = {
     maggioliSvgIconsPlugin,
   ],
   verbose : false,
-  skipWarning : true,
+  skipWarnings : true,
 }
 
 

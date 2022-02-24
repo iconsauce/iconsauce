@@ -10,7 +10,7 @@ describe('Filter', () => {
   })
 
   test('Check the errors are thrown as expected', () => {
-    configTest.skipWarning = false
+    configTest.skipWarnings = false
     expect(() => filter(configTest, dictionary, selectors)).toThrow(Error)
   })
 })

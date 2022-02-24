@@ -9,7 +9,7 @@ describe('Config', () => {
     expect(config.content).toEqual(configTest.content)
     expect(config.fontFamily).toEqual(configTest.fontFamily)
     expect(config.fontSize).toEqual(configTest.fontSize)
-    expect(config.skipWarning).toEqual(configTest.skipWarning)
+    expect(config.skipWarnings).toEqual(configTest.skipWarnings)
     expect(config.verbose).toEqual(configTest.verbose)
     expect(config.plugin.length).toEqual(configTest.plugin.length)
   })
