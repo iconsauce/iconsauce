@@ -10,29 +10,29 @@ let configPath = './iconsauce.config.js'
 
 const args = arg({
   '--config': String,
-  '--verbose': Boolean,
-  '--skip-warnings': Boolean,
   '--output': String,
+  '--skip-warnings': Boolean,
+  '--verbose': Boolean,
   '-c': '--config',
+  '-o': '--output',
   '-s': '--skip-warnings',
   '-v': '--verbose',
-  '-o': '--output',
 })
 
 if (args['--config']) {
   configPath = args['--config']
 }
 
-if (args['--verbose'] === undefined) {
-  args['--verbose'] = false
+if (args['--output'] === undefined) {
+  args['--output'] = TEMP_CSS_PATH
 }
 
 if (args['--skip-warnings'] === undefined) {
   args['--skip-warnings'] = true
 }
 
-if (args['--output'] === undefined) {
-  args['--output'] = TEMP_CSS_PATH
+if (args['--verbose'] === undefined) {
+  args['--verbose'] = false
 }
 
 const config = new LoadConfig (configPath, args['--verbose'], args['--skip-warnings'])
