@@ -71,7 +71,7 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
   })
 }
 
-async function fontTottf () {
+const fontTottf = async () => {
   const ttf = svg2ttf(await readFile(TEMP_FONT_PATH_SVG, 'utf8'), {})
   return Buffer.from(ttf.buffer).toString('base64')
 }
