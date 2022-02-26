@@ -1,10 +1,12 @@
 import { IconsaucePlugin } from '@iconsauce/plugin'
+import { PathLike } from 'fs'
 
 export interface Config {
   content: string[]
-  fontSize: string
+  dictionary?: PathLike
   fontFamily: string
+  fontSize: string
   plugin: IconsaucePlugin[]
-  verbose: boolean
   skipWarnings: boolean
+  verbose: boolean
 }

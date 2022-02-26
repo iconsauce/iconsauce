@@ -1,46 +1,48 @@
 import chalk from 'chalk'
+import { IconsaucePlugin } from '@iconsauce/plugin'
+import { PathLike } from 'fs'
 import { lilconfigSync } from 'lilconfig'
 import { Config } from '../interface/config'
-import { IconsaucePlugin } from '@iconsauce/plugin'
+import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
+import maggioliSvgIconsPlugin from '@iconsauce/mgg-icons'
 import materialDesignIconsUpdatedPlugin from '@iconsauce/material-design-icons-updated'
 import mdiSvgPlugin from '@iconsauce/mdi-svg'
-import maggioliSvgIconsPlugin from '@iconsauce/mgg-icons'
-import { DEFAULT_CONFIG_PATH, PROJECT_NAME, PROJECT_PATH } from './utils'
-
 
 const defaultConfig: Config = {
-  content : [],
-  fontSize : '24px',
-  fontFamily : 'iconsauce',
-  plugin : [
+  content: [],
+  fontFamily: 'iconsauce',
+  fontSize: '24px',
+  plugin: [
     materialDesignIconsUpdatedPlugin,
     mdiSvgPlugin,
     maggioliSvgIconsPlugin,
   ],
-  verbose : false,
-  skipWarnings : true,
+  skipWarnings: true,
+  verbose: false,
 }
 
 export class LoadConfig implements Config {
   content: string[]
-  fontSize: string
+  dictionary?: PathLike
   fontFamily: string
+  fontSize: string
   plugin: IconsaucePlugin[]
-  verbose: boolean
   skipWarnings: boolean
+  verbose: boolean
 
-  constructor (configPath?: string, verbose?: boolean, skipWarnings?: boolean ) {
+  constructor (configPath?: string, dictionary?: PathLike, skipWarnings?: boolean, verbose?: boolean) {
     const config = _loadConfig(configPath)
 
     if (config.content.length === 0) {
       throw new Error(chalk.red('Missing required "content" property'))
     }
     this.content = config.content
+    this.dictionary = dictionary ?? undefined
     this.fontFamily = defaultConfig.fontFamily
     this.fontSize = config.fontSize ?? defaultConfig.fontSize
     this.plugin = config.plugin ?? defaultConfig.plugin
-    this.verbose = config.verbose ?? verbose ?? defaultConfig.verbose
     this.skipWarnings = config.verbose ?? skipWarnings ?? defaultConfig.skipWarnings
+    this.verbose = config.verbose ?? verbose ?? defaultConfig.verbose
   }
 }
 

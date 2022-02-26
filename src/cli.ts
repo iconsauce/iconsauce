@@ -10,10 +10,12 @@ let configPath = './iconsauce.config.js'
 
 const args = arg({
   '--config': String,
+  '--dictionary': String,
   '--output': String,
   '--skip-warnings': Boolean,
   '--verbose': Boolean,
   '-c': '--config',
+  '-d': '--dictionary',
   '-o': '--output',
   '-s': '--skip-warnings',
   '-v': '--verbose',
@@ -35,9 +37,9 @@ if (args['--verbose'] === undefined) {
   args['--verbose'] = false
 }
 
-const config = new LoadConfig (configPath, args['--verbose'], args['--skip-warnings'])
+const config = new LoadConfig (configPath, args['--dictionary'], args['--skip-warnings'], args['--verbose'])
 
-build( config).then((data: string) => {
+build(config).then((data: string) => {
   writeFile(args['--output'] as PathLike, data)
     .catch(console.error)
 }).catch(console.error)

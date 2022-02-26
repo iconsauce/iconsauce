@@ -22,11 +22,11 @@ const template = handlebars.compile(`@font-face {
 {{/eachInMap}}
 `)
 
-handlebars.registerHelper( 'iconselector', (key: string, value: string) => {
+handlebars.registerHelper('iconselector', (key: string, value: string) => {
   return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.toString().codePointAt(0)?.toString(16) as string}" }`)
 })
 
-handlebars.registerHelper( 'eachInMap', (map: Map<string, PathLike>, block: HelperOptions ) => {
+handlebars.registerHelper('eachInMap', (map: Map<string, PathLike>, block: HelperOptions ) => {
   let out = ''
   for (const key of map.keys()){
     out += block.fn({ key, value: map.get(key) })
@@ -48,8 +48,6 @@ const css = (config: Config, base64font: string, dictionary: Map<string, PathLik
     fontSize: config.fontSize,
     selectors: dictionary,
   })
-
-  // console.log(cssString)
 
   return cssString
 }
