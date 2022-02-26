@@ -16,17 +16,18 @@ const dictionary = (plugin: IconsaucePlugin, icons: PathLike[]) => {
 
 const icons = async (config: Config): Promise<Map<string, PathLike>> => {
   let pluginItem
-  let icons: PathLike[] = []
   let iconsDictionary: Map<string, PathLike> = new Map()
   for (pluginItem of config.plugin) {
     const entries = await fg(pluginItem.path.toString(), { dot: true })
-    icons = [...icons, ...entries]
-    const newIcons = dictionary(pluginItem, icons)
+    const newIcons = dictionary(pluginItem, entries)
     iconsDictionary = new Map([ ...iconsDictionary, ...newIcons ])
   }
+
   if (config.verbose) {
     console.info(`Found ${chalk.green(iconsDictionary.size)} icons from ${chalk.green(config.plugin.length)} ${config.plugin.length === 1 ? 'library' : 'libraries'}`)
   }
+
+  console.log(iconsDictionary.size)
   return iconsDictionary
 }
 
