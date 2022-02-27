@@ -1,6 +1,6 @@
 import chalk from 'chalk'
 import { PathLike } from 'fs'
-import { Config } from '../interface/config'
+import { Config } from '@iconsauce/config/src/interface/config'
 
 const filter = (config: Config, dictionary: Map<string, PathLike>, selectors: {occurrences: string[], map: Map<string, PathLike>}): Map<string, PathLike> => {
   let occurrence

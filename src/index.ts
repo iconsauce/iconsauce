@@ -7,11 +7,11 @@ import { PROJECT_NAME } from './lib/utils'
 import { fontBase64 } from './lib/font'
 import { dictionaryFile } from './lib/dictionary'
 import { css } from './lib/css'
-import { Config } from './interface/config'
-import { LoadConfig } from './lib/loadConfig'
+import { IconsauceConfig } from '@iconsauce/config'
+import { Config } from '@iconsauce/config/src/interface/config'
 
 const build = async (configuration?: Config): Promise<string> => {
-  const config = configuration ?? new LoadConfig()
+  const config: Config = configuration ?? new IconsauceConfig()
 
   console.info(`${chalk.cyan(PROJECT_NAME)}`)
 

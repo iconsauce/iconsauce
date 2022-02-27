@@ -2,8 +2,8 @@
 import arg from 'arg'
 import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
+import { IconsauceConfig } from '@iconsauce/config'
 import { build } from './index'
-import { LoadConfig } from './lib/loadConfig'
 import { TEMP_CSS_PATH } from './lib/utils'
 
 let configPath = './iconsauce.config.js'
@@ -37,7 +37,7 @@ if (args['--verbose'] === undefined) {
   args['--verbose'] = false
 }
 
-const config = new LoadConfig (configPath, args['--dictionary'], args['--skip-warnings'], args['--verbose'])
+const config = new IconsauceConfig (configPath, args['--dictionary'], args['--skip-warnings'], args['--verbose'])
 
 build(config).then((data: string) => {
   writeFile(args['--output'] as PathLike, data)

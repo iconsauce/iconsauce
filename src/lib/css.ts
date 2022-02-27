@@ -1,6 +1,6 @@
 import { PathLike } from 'fs'
 import handlebars, { HelperOptions } from 'handlebars'
-import { Config } from '../interface/config'
+import { Config } from '@iconsauce/config/src/interface/config'
 
 const template = handlebars.compile(`@font-face {
   font-family: "{{fontFamily}}";

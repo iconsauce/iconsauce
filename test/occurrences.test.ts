@@ -1,7 +1,7 @@
 import { PathLike } from 'fs'
 import { occurrences } from '../src/lib/occurrences'
-import files from './fixtures/files'
 import { configTest } from './fixtures/config'
+import files from './fixtures/files'
 
 configTest.verbose = true
 

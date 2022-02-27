@@ -1,4 +1,4 @@
-import { Config } from '../../src/interface/config'
+import { Config } from '@iconsauce/config/src/interface/config'
 import materialDesignIconsUpdatedPlugin from '@iconsauce/material-design-icons-updated'
 import mdiSvgPlugin from '@iconsauce/mdi-svg'
 import maggioliSvgIconsPlugin from '@iconsauce/mgg-icons'

@@ -1,8 +1,8 @@
 import { fontBase64 } from '../src/lib/font'
-import filteredDictionary from './fixtures/filtered-dictionary'
 import { occurrencesCleaned } from './fixtures/selectors'
-import base64Font from './fixtures/base64-font'
 import { configTest } from './fixtures/config'
+import filteredDictionary from './fixtures/filtered-dictionary'
+import base64Font from './fixtures/base64-font'
 
 describe('Font', () => {
   test('Check the Base64 generated font', async () => {

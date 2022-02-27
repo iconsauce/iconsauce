@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import path from 'path'
 import { writeFile, mkdir } from 'fs/promises'
-import { Config } from '../interface/config'
+import { Config } from '@iconsauce/config/src/interface/config'
 
 const dictionaryFile = async (config: Config, dictionary: string[]): Promise<void> => {
 
