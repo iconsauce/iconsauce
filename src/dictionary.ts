@@ -5,10 +5,6 @@ import { writeFile, mkdir } from 'fs/promises'
 import { Config } from '@iconsauce/config/src/interface/config'
 
 const buildDictionary = async (config: Config, dictionary: Map<string, PathLike>, outputPath: PathLike): Promise<void> => {
-  if (config.verbose) {
-    console.info('Creating dictionary file')
-  }
-
   const jsonDictionary = JSON.stringify(Array.from(dictionary.keys()), null, 4)
 
   await mkdir(path.resolve(path.dirname(outputPath.toString())), { recursive: true })
@@ -19,7 +15,7 @@ const buildDictionary = async (config: Config, dictionary: Map<string, PathLike>
   await writeFile(outputPath, jsonDictionary, { encoding: 'utf8' })
     .then(() => {
       if (config.verbose) {
-        console.log(`Icons dictionary file ${chalk.green(outputPath)} successfully created`)
+        console.log(`Build of dictionary file ${chalk.green(outputPath)} successfully created`)
       }
     })
     .catch(error => {
