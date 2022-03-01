@@ -38,6 +38,7 @@ if (args['--verbose'] === undefined) {
 }
 
 const config = new IconsauceConfig (configPath, args['--skip-warnings'], args['--verbose'])
+
 console.info(`${chalk.cyan(PROJECT_NAME)}`)
 
 build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined) => {
@@ -46,13 +47,12 @@ build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string,
   }
 
   if (args['--output-dictionary'] !== undefined) {
-    buildDictionary(config, data.dictionary, args['--output-dictionary'])
+    buildDictionary(config, data.list, args['--output-dictionary'])
       .catch(console.error)
   }
 
   if (args['--output-svg'] !== undefined) {
     buildSVG(config, data.list, args['--output-svg'])
-      .catch(console.error)
   }
 
   if (args['--output-css'] !== undefined) {

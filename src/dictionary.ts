@@ -9,7 +9,7 @@ const buildDictionary = async (config: Config, dictionary: Map<string, PathLike>
     console.info('Creating dictionary file')
   }
 
-  const jsonDictionary = JSON.stringify(dictionary, null, 4)
+  const jsonDictionary = JSON.stringify(Array.from(dictionary.keys()), null, 4)
 
   await mkdir(path.resolve(path.dirname(outputPath.toString())), { recursive: true })
     .catch(error => {

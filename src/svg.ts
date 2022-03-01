@@ -1,22 +1,20 @@
 import chalk from 'chalk'
 import { PathLike } from 'fs'
+import copy from 'recursive-copy'
 import path from 'path'
-import { copyFile, mkdir } from 'fs/promises'
 import { Config } from '@iconsauce/config/src/interface/config'
 
-const buildSVG = async (config: Config, list: Map<string, PathLike>, outputPath: PathLike): Promise<void> => {
+const buildSVG = (config: Config, list: Map<string, PathLike>, outputPath: PathLike): void => {
 
   if (config.verbose) {
     console.info('Creating SVGs')
   }
 
-  await mkdir(path.resolve(path.dirname(outputPath.toString())), { recursive: true })
-    .catch(error => {
-      throw Error(chalk.red(error))
-    })
-
   for (const key of list.keys()) {
-    await copyFile(list.get(key) as PathLike, path.resolve(path.dirname(outputPath.toString()), `${key}.svg`))
+    copy(path.resolve(list.get(key) as string), path.resolve(path.join(outputPath.toString(), `${key}.svg`)), { overwrite: true })
+      .catch(error => {
+        throw Error(chalk.red(error))
+      })
   }
 
   if (config.verbose) {
