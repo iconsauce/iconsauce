@@ -23,7 +23,7 @@
     "@iconsauce/mdi-svg": "^1.0.5",
     "@iconsauce/mgg-icons": "^1.0.5",
     "@iconsauce/plugin": "^0.0.1",
-    "@iconsauce/config": "^0.0.2",
+    "@iconsauce/config": "file:../iconsauce-config",
     "arg": "^5.0.1",
     "chalk": "4.0.0",
     "css-loader": "^6.6.0",

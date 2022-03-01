@@ -1,32 +1,32 @@
 #!/usr/bin/env node
 import arg from 'arg'
+import chalk from 'chalk'
 import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
 import { IconsauceConfig } from '@iconsauce/config'
-import { build } from './index'
-import { TEMP_CSS_PATH } from './lib/utils'
+import { PROJECT_NAME } from './lib/utils'
+import { build } from './build'
+import { buildCSS, buildDictionary, buildSVG } from './index'
 
 let configPath = './iconsauce.config.js'
 
 const args = arg({
   '--config': String,
-  '--dictionary': String,
-  '--output': String,
+  '--output-css': String,
+  '--output-dictionary': String,
+  '--output-svg': String,
   '--skip-warnings': Boolean,
   '--verbose': Boolean,
   '-c': '--config',
-  '-d': '--dictionary',
-  '-o': '--output',
+  '-oc': '--output-css',
+  '-od': '--output-dictionary',
+  '-os': '--output-svg',
   '-s': '--skip-warnings',
   '-v': '--verbose',
 })
 
 if (args['--config']) {
   configPath = args['--config']
-}
-
-if (args['--output'] === undefined) {
-  args['--output'] = TEMP_CSS_PATH
 }
 
 if (args['--skip-warnings'] === undefined) {
@@ -37,9 +37,28 @@ if (args['--verbose'] === undefined) {
   args['--verbose'] = false
 }
 
-const config = new IconsauceConfig (configPath, args['--dictionary'], args['--skip-warnings'], args['--verbose'])
+const config = new IconsauceConfig (configPath, args['--skip-warnings'], args['--verbose'])
+console.info(`${chalk.cyan(PROJECT_NAME)}`)
 
-build(config).then((data: string) => {
-  writeFile(args['--output'] as PathLike, data)
-    .catch(console.error)
+build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined) => {
+  if (data === undefined) {
+    return
+  }
+
+  if (args['--output-dictionary'] !== undefined) {
+    buildDictionary(config, data.dictionary, args['--output-dictionary'])
+      .catch(console.error)
+  }
+
+  if (args['--output-svg'] !== undefined) {
+    buildSVG(config, data.list, args['--output-svg'])
+      .catch(console.error)
+  }
+
+  if (args['--output-css'] !== undefined) {
+    buildCSS(config, data.list).then((data: string) => {
+      writeFile(args['--output-css'] as PathLike, data)
+        .catch(console.error)
+    }).catch(console.error)
+  }
 }).catch(console.error)
