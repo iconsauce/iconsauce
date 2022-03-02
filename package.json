@@ -1,6 +1,6 @@
 {
   "name": "@iconsauce/core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Includes only the SVG icons matched in your code and generates a CSS icon font set.",
   "main": "lib/index.js",
   "scripts": {
@@ -40,11 +40,13 @@
     "@types/debug": "^4.1.7",
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
+    "@types/react": "^17.0.0",
     "@types/svg2ttf": "^5.0.1",
     "@types/svgicons2svgfont": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "eslint": "^8.10.0",
+    "react": "^17.0.0",
     "jest": "^27.5.0",
     "prettier": "^2.5.1",
     "ts-jest": "^27.1.3",

@@ -9,6 +9,9 @@ const dictionary = (plugin: IconsaucePlugin, icons: PathLike[]) => {
   let icon
   for (icon of icons) {
     const iconPath = icon.toString().match(plugin.regex.lib) as RegExpMatchArray
+    if (iconPath === null) {
+      throw Error(`${chalk.red('IconsaucePlugin regex.lib not matching icons for the path')} ${icon.toString()}`)
+    }
     iconsDictionary.set(plugin.selector(iconPath).toLowerCase(), icon)
   }
   return iconsDictionary

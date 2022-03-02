@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
 import React from 'react'
 
 const Component = () => {
