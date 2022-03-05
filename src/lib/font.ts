@@ -28,8 +28,8 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
       return
     }
     const fontStream = new SVGIcons2SVGFontStream({
-      centerHorizontally: false,
-      centerVertically: false,
+      centerHorizontally: true,
+      centerVertically: true,
       fixedWidth: true,
       fontHeight: 2048,
       fontName: config.fontFamily,

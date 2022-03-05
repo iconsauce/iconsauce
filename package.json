@@ -1,6 +1,6 @@
 {
   "name": "@iconsauce/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Includes only the SVG icons matched in your code and generates a CSS icon font set.",
   "main": "lib/index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@iconsauce/config": "^0.0.3",
-    "@iconsauce/material-design-icons-updated": "^1.0.5",
+    "@iconsauce/material-icons": "^1.0.0",
     "@iconsauce/mdi-svg": "^1.0.5",
     "@iconsauce/mgg-icons": "^1.0.5",
     "@iconsauce/plugin": "^0.0.1",
