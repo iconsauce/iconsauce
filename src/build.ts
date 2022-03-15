@@ -34,7 +34,6 @@ const build = async (configuration?: Config): Promise<{ dictionary: Map<string, 
     if (config.verbose) {
       console.info('No icons found in your code yet, skipping iconsauce CSS icon font creation')
     }
-    return
   }
 
   return {
