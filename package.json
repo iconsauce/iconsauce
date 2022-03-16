@@ -1,6 +1,6 @@
 {
   "name": "@iconsauce/core",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Includes only the SVG icons matched in your code and generates a CSS icon font set.",
   "main": "lib/index.js",
   "scripts": {
@@ -9,6 +9,7 @@
     "dev": "tsc --watch",
     "lib": "cp -r ./build/src ./lib",
     "lint": "eslint --ignore-path .eslintignore",
+    "prepublishOnly": "npm run test",
     "test": "npm run build && jest"
   },
   "bin": {
@@ -19,10 +20,10 @@
     "src/interface"
   ],
   "dependencies": {
-    "@iconsauce/config": "^0.1.0",
-    "@iconsauce/material-icons": "^1.0.0",
-    "@iconsauce/mdi-svg": "^1.0.5",
-    "@iconsauce/mgg-icons": "^1.0.5",
+    "@iconsauce/config": "^0.2.0",
+    "@iconsauce/material-icons": "^1.0.2",
+    "@iconsauce/mdi-svg": "^1.0.7",
+    "@iconsauce/mgg-icons": "^1.0.8",
     "@iconsauce/plugin": "^0.0.1",
     "arg": "^5.0.1",
     "chalk": "4.0.0",
@@ -35,6 +36,10 @@
     "svgicons2svgfont": "^10.0.5"
   },
   "devDependencies": {
+    "material-design-icons-updated": "^7.0.0",
+    "@material-icons/svg": "^1.0.25",
+    "@maggioli-design-system/svg-icons": "^2.6.3",
+    "@mdi/svg": "^6.5.95",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-typescript": "^7.16.7",
     "@types/debug": "^4.1.7",
