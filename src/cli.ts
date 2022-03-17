@@ -4,10 +4,9 @@ import chalk from 'chalk'
 import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
 import { IconsauceConfig } from '@iconsauce/config'
-import { PROJECT_NAME } from './lib/utils'
 import { build } from './build'
 import { buildCSS, buildDictionary, buildSVG } from './index'
-
+import { name, version } from '../package.json'
 let configPath = './iconsauce.config.js'
 
 const args = arg({
@@ -39,7 +38,8 @@ if (args['--verbose'] === undefined) {
 
 const config = new IconsauceConfig (configPath, args['--skip-warnings'], args['--verbose'])
 
-console.info(`${chalk.cyan(PROJECT_NAME)}`)
+console.info(chalk.cyan(name))
+console.info(chalk.cyan(`v${String(version)}`))
 
 build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined) => {
   if (data === undefined) {
