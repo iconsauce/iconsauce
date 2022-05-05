@@ -5,6 +5,10 @@ import { css } from './lib/css'
 import { Config } from '@iconsauce/config/src/interface/config'
 
 const buildCSS = async (config: Config, list: Map<string, PathLike>): Promise<string> => {
+  if (list.size === 0) {
+    console.info(`${chalk.blue('No selectors found')}, the output CSS is empty`)
+    return ''
+  }
   const { base64font, dictionary } = await fontBase64(config, list)
   const cssData = css(config, base64font, dictionary)
 
