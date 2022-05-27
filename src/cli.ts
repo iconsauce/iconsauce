@@ -7,7 +7,8 @@ import { IconsauceConfig } from '@iconsauce/config'
 import { build } from './build'
 import { buildCSS, buildDictionary, buildSVG } from './index'
 import { name, version } from '../package.json'
-let configPath = './iconsauce.config.js'
+import path from 'path'
+let configPath = `.${path.sep}iconsauce.config.js`
 
 const args = arg({
   '--config': String,

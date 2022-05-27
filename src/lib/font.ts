@@ -14,8 +14,8 @@ interface Glyph extends ReadStream {
   }
 }
 
-const TEMP_FONT_PATH = path.join(TEMP_PATH, 'font/')
-const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, `/${PROJECT_NAME}.svg`)
+const TEMP_FONT_PATH = path.join(TEMP_PATH, `font${path.sep}`)
+const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, `${path.sep}${PROJECT_NAME}.svg`)
 
 const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise<{ base64font: string, dictionary: Map<string, PathLike> }> => {
   await mkdir(TEMP_FONT_PATH, { recursive: true })
