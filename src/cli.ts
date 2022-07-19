@@ -5,7 +5,7 @@ import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
 import { IconsauceConfig } from '@iconsauce/config'
 import { build } from './build'
-import { buildCSS, buildDictionary, buildSVG } from './index'
+import { buildCSS, buildDictionary, buildSVG, buildDump } from './index'
 import { name, version } from '../package.json'
 import path from 'path'
 let configPath = `.${path.sep}iconsauce.config.js`
@@ -15,12 +15,14 @@ const args = arg({
   '--output-css': String,
   '--output-dictionary': String,
   '--output-svg': String,
+  '--output-dump-svg': String,
   '--skip-warnings': Boolean,
   '--verbose': Boolean,
   '-c': '--config',
   '-oc': '--output-css',
   '-od': '--output-dictionary',
   '-os': '--output-svg',
+  '-ods': '--output-dump-svg',
   '-s': '--skip-warnings',
   '-v': '--verbose',
 })
@@ -45,6 +47,11 @@ console.info(chalk.cyan(`v${String(version)}`))
 build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined) => {
   if (data === undefined) {
     return
+  }
+
+  if (args['--output-dump-svg'] !== undefined) {
+    buildDump(config, data.dictionary, args['--output-dump-svg'])
+      .catch(console.error)
   }
 
   if (args['--output-dictionary'] !== undefined) {
