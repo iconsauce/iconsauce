@@ -8,6 +8,7 @@ import { build } from './build'
 import { buildCSS, buildDictionary, buildSVG, buildDump } from './index'
 import { name, version } from '../package.json'
 import path from 'path'
+import { checkFilePath } from './lib/utils'
 let configPath = `.${path.sep}iconsauce.config.js`
 
 const args = arg({
@@ -64,9 +65,9 @@ build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string,
   }
 
   if (args['--output-css'] !== undefined) {
-    buildCSS(config, data.list).then((data: string) => {
-      writeFile(args['--output-css'] as PathLike, data)
-        .catch(console.error)
-    }).catch(console.error)
+    checkFilePath(args['--output-css'])
+      .then(() => buildCSS(config, data.list))
+      .then((data: string) => writeFile(args['--output-css'] as PathLike, data))
+      .catch(console.error)
   }
 }).catch(console.error)
