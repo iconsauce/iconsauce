@@ -1,6 +1,6 @@
 {
   "name": "@iconsauce/core",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Includes only the SVG icons matched in your code and generates a CSS icon font set.",
   "main": "lib/index.js",
   "scripts": {
@@ -44,7 +44,7 @@
     "@babel/preset-typescript": "7.23.2",
     "@types/debug": "4.1.10",
     "@types/jest": "29.5.6",
-    "@types/node": "^16.11.26",
+    "@types/node": "20.6.1",
     "@types/react": "18.2.31",
     "@types/svg2ttf": "5.0.2",
     "@types/svgicons2svgfont": "10.0.4",
