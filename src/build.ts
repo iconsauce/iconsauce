@@ -30,6 +30,12 @@ const build = async (configuration?: Config): Promise<{ dictionary: Map<string, 
   const selectors = await occurrences(config, files)
   const iconList = filter(config, iconDictionary, selectors)
 
+  if (config.verbose) {
+    const relativeSize = iconDictionary.size - selectors.map.size
+    const fraction = relativeSize / iconDictionary.size
+    console.info(`The bundle is ${chalk.green(`${(fraction * 100).toFixed(4)}%`)} smaller than the entire ${config.plugin.length === 1 ? 'icon library' : `${config.plugin.length} libraries together`}`)
+  }
+
   if (iconList.size === 0) {
     if (config.verbose) {
       console.info('No icons found in your code yet, skipping iconsauce CSS icon font creation')

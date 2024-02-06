@@ -25,7 +25,7 @@ const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurre
   }
 
   if (config.verbose) {
-    console.info(`Found ${chalk.green(inputIcons.length)} selectors from ${chalk.green(files.length)} ${files.length === 1 ? 'file' : 'files'}`)
+    console.info(`Found ${chalk.green(inputIcons.length)} unique ${inputIcons.length === 1 ? 'selector' : 'selectors'} from ${chalk.green(files.length)} ${files.length === 1 ? 'file' : 'files'}`)
   }
 
   return {
