@@ -1,0 +1,23 @@
+{
+  "name": "build-test",
+  "version": "1.0.0",
+  "description": "A simple project to run iconsuce ad test it runtime",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./node_modules/@iconsauce/core/src/cli.js --verbose --config ./iconsauce.config.js --output-css ./export/icons.css"
+  },
+  "dependencies": {
+    "@iconsauce/config": "0.4.1",
+    "@iconsauce/material-icons": "1.0.3",
+    "@iconsauce/mdi-svg": "1.0.8",
+    "@iconsauce/mgg-icons": "1.0.9",
+    "@iconsauce/plugin": "0.0.1",
+    "postcss": "8.4.33",
+    "postcss-flexbugs-fixes": "5.0.2",
+    "postcss-iconsauce": "1.4.0",
+    "postcss-import": "16.0.0",
+    "postcss-loader": "7.3.4"
+  },
+  "author": "Vittorio Vittori",
+  "license": "ISC"
+}
