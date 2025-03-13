@@ -61,6 +61,10 @@
     "role": "Design System Architect",
     "url": "https://github.com/vitto"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iconsauce/iconsauce.git"
+  },
   "contributors": [
     {
       "name": "Andrea Pruccoli",
