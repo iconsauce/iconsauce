@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { PathLike } from 'fs'
 import { fontBase64 } from './lib/font'
 import { css } from './lib/css'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 
 const buildCSS = async (config: Config, list: Map<string, PathLike>): Promise<string> => {
   if (list.size === 0) {

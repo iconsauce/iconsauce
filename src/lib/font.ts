@@ -4,7 +4,7 @@ import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
 import svg2ttf from 'svg2ttf'
 import SVGIcons2SVGFontStream from 'svgicons2svgfont'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 import { PROJECT_NAME, TEMP_PATH } from './utils'
 
 interface Glyph extends ReadStream {

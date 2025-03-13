@@ -5,7 +5,7 @@ import { occurrences } from './lib/occurrences'
 import { icons } from './lib/icons'
 import { filter } from './lib/filter'
 import { IconsauceConfig } from '@iconsauce/config'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 
 const build = async (configuration?: Config): Promise<{ dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined> => {
   const config: Config = configuration ?? new IconsauceConfig()

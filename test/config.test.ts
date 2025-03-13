@@ -1,11 +1,11 @@
 import { IconsauceConfig } from '@iconsauce/config'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 import path from 'path'
 import { configTest } from './fixtures/config'
 
 describe('Config', () => {
-  test('Check IconsauceConfig loads a config', () => {
-    const config: Config = new IconsauceConfig(path.resolve(__dirname, './fixtures/iconsauce.config.js'))
+  test('Check IconsauceConfig loads a config', async () => {
+    const config: Config = await new IconsauceConfig().loadConfig(path.resolve(__dirname, './fixtures/iconsauce.config.js'))
     expect(config.center).toEqual(configTest.center)
     expect(config.content).toEqual(configTest.content)
     expect(config.fontFamily).toEqual(configTest.fontFamily)

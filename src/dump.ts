@@ -1,5 +1,5 @@
 import { IconsauceConfig } from '@iconsauce/config'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 import chalk from 'chalk'
 import { PathLike } from 'fs'
 import path from 'path'

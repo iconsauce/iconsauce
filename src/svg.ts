@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { PathLike } from 'fs'
 import copy from 'recursive-copy'
 import path from 'path'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 
 const buildSVG = (config: Config, list: Map<string, PathLike>, outputPath: PathLike): void => {
   for (const key of list.keys()) {

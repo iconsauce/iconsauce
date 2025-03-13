@@ -1,4 +1,4 @@
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 import materialIconsPlugin from '@iconsauce/material-icons'
 import mdiSvgPlugin from '@iconsauce/mdi-svg'
 import maggioliSvgIconsPlugin from '@iconsauce/mgg-icons'
@@ -18,5 +18,3 @@ export const configTest: Config = {
   verbose : false,
   skipWarnings : true,
 }
-
-

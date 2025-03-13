@@ -7,9 +7,9 @@ import { IconsauceConfig } from '@iconsauce/config'
 import { build } from './build'
 import { buildCSS, buildDictionary, buildSVG, buildDump } from './index'
 import { name, version } from '../package.json'
-import path from 'path'
+import { Config } from '@iconsauce/config/lib/interface/config'
 import { checkFilePath } from './lib/utils'
-let configPath = `.${path.sep}iconsauce.config.js`
+let configPath = undefined
 
 const args = arg({
   '--config': String,
@@ -40,34 +40,38 @@ if (args['--verbose'] === undefined) {
   args['--verbose'] = false
 }
 
-const config = new IconsauceConfig (configPath, args['--skip-warnings'], args['--verbose'])
+function loadConfig (configPath: string | undefined): Promise<Config> {
+  return new IconsauceConfig(args['--skip-warnings'], args['--verbose']).loadConfig(configPath)
+}
 
 console.info(chalk.cyan(name))
 console.info(chalk.cyan(`v${String(version)}`))
 
-build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined) => {
-  if (data === undefined) {
-    return
-  }
+loadConfig(configPath).then(config =>
+  build(config).then((data: { dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined) => {
+    if (data === undefined) {
+      return
+    }
 
-  if (args['--output-dump-svg'] !== undefined) {
-    buildDump(config, data.dictionary, args['--output-dump-svg'])
-      .catch(console.error)
-  }
+    if (args['--output-dump-svg'] !== undefined) {
+      buildDump(config, data.dictionary, args['--output-dump-svg'])
+        .catch(console.error)
+    }
 
-  if (args['--output-dictionary'] !== undefined) {
-    buildDictionary(config, data.list, args['--output-dictionary'])
-      .catch(console.error)
-  }
+    if (args['--output-dictionary'] !== undefined) {
+      buildDictionary(config, data.list, args['--output-dictionary'])
+        .catch(console.error)
+    }
 
-  if (args['--output-svg'] !== undefined) {
-    buildSVG(config, data.list, args['--output-svg'])
-  }
+    if (args['--output-svg'] !== undefined) {
+      buildSVG(config, data.list, args['--output-svg'])
+    }
 
-  if (args['--output-css'] !== undefined) {
-    checkFilePath(args['--output-css'])
-      .then(() => buildCSS(config, data.list))
-      .then((data: string) => writeFile(args['--output-css'] as PathLike, data))
-      .catch(console.error)
-  }
-}).catch(console.error)
+    if (args['--output-css'] !== undefined) {
+      checkFilePath(args['--output-css'])
+        .then(() => buildCSS(config, data.list))
+        .then((data: string) => writeFile(args['--output-css'] as PathLike, data))
+        .catch(console.error)
+    }
+  }).catch(console.error),
+).catch(console.error)

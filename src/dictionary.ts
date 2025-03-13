@@ -1,7 +1,7 @@
 import chalk from 'chalk'
 import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
-import { Config } from '@iconsauce/config/src/interface/config'
+import { Config } from '@iconsauce/config/lib/interface/config'
 import { checkFilePath } from './lib/utils'
 
 const buildDictionary = async (config: Config, dictionary: Map<string, PathLike>, outputPath: PathLike): Promise<void> => {
