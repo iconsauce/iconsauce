@@ -23,7 +23,10 @@ const template = handlebars.compile(`@font-face {
 `)
 
 handlebars.registerHelper('iconselector', (key: string, value: string) => {
-  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.toString().codePointAt(0)?.toString(16) as string}" }`)
+  console.log('value', value)
+  console.log('codepointat', value.codePointAt(0))
+  console.log('tostring(16)', value.codePointAt(0)?.toString(16) )
+  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.codePointAt(0)?.toString(16) as string}" }`)
 })
 
 handlebars.registerHelper('eachInMap', (map: Map<string, PathLike>, block: HelperOptions ) => {
