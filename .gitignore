@@ -7,3 +7,5 @@
 node_modules
 export
 /example
+/test/build/yarn.lock
+/test/build/package-lock.json
