@@ -10,6 +10,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "files": ["src/**/*.ts", "test/**/*.ts" ],
   "rules": {
     "linebreak-style": [
       "error",
