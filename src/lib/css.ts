@@ -23,7 +23,7 @@ const template = handlebars.compile(`@font-face {
 `)
 
 handlebars.registerHelper('iconselector', (key: string, value: string) => {
-  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.toString().codePointAt(0)?.toString(16) as string}" }`)
+  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.codePointAt(0)?.toString(16) as string}" }`)
 })
 
 handlebars.registerHelper('eachInMap', (map: Map<string, PathLike>, block: HelperOptions ) => {
@@ -34,13 +34,19 @@ handlebars.registerHelper('eachInMap', (map: Map<string, PathLike>, block: Helpe
   return out
 })
 
-const css = (config: Config, base64font: string, dictionary: Map<string, PathLike>): string => {
+/**
+ *
+ * @param config Configuration context
+ * @param base64font encoded font
+ * @param dictionary a map where key is selector and the value is unicode string
+ * @returns css formatted file as a string
+ */
+const css = (config: Config, base64font: string, dictionary: Map<string, string>): string => {
   const prefixes = new Set()
 
   for (const key of dictionary.keys()) {
     prefixes.add(key.toString().split('/')[0])
   }
-
   const cssString = template({
     fontBase64: base64font,
     classPrefixes: prefixes,

@@ -17,7 +17,7 @@ interface Glyph extends ReadStream {
 const TEMP_FONT_PATH = path.join(TEMP_PATH, `font${path.sep}`)
 const TEMP_FONT_PATH_SVG = path.join(TEMP_FONT_PATH, `${path.sep}${PROJECT_NAME}.svg`)
 
-const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise<{ base64font: string, dictionary: Map<string, PathLike> }> => {
+const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise<{ base64font: string, dictionary: Map<string, string> }> => {
   await mkdir(TEMP_FONT_PATH, { recursive: true })
     .catch(console.error)
   let startUnicode = 0xea01
@@ -39,7 +39,7 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
       normalize: false,
     })
 
-    const dictionary: Map<string, PathLike> = new Map()
+    const dictionary: Map<string, string> = new Map()
 
     for (const iconSelector of icons.keys()) {
       const glyph = createReadStream(path.resolve(icons.get(iconSelector) as string)) as Glyph
