@@ -6,6 +6,9 @@ jobs:
     name: Build and Test core
     uses: ./.github/workflows/test.yml
   publish:
+    permissions:
+      id-token: write
+      contents: read
     needs: [build_test]
     name: Publish npm
     uses: iconsauce/.github/.github/workflows/publish-npm.yml@main

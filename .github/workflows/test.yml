@@ -15,7 +15,9 @@ jobs:
 
     name: Node on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: iconsauce/.github/.github/actions/setup-node@main
