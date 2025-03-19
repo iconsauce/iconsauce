@@ -1,5 +1,7 @@
 name: Publish Iconsauce Core
 on:
+  release:
+    types: [released]
   workflow_dispatch:
 jobs:
   build_test:
