@@ -13,5 +13,6 @@ describe('Config', () => {
     expect(config.skipWarnings).toEqual(configTest.skipWarnings)
     expect(config.verbose).toEqual(configTest.verbose)
     expect(config.plugin.length).toEqual(configTest.plugin.length)
+    expect(config.plugin[0].path).toEqual(configTest.plugin[0].path)
   })
 })
