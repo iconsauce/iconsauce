@@ -53,7 +53,7 @@ export default MyComponent
 
 ## Config
 
-Place config file `iconsauce.config.js` in the root of your node project:
+Place config file in the root of your node project:
 
 ```js
 module.exports = {
@@ -69,3 +69,7 @@ module.exports = {
   }
 }
 ```
+
+For more info visit [Configuration wiki][config]
+
+[config]: https://github.com/iconsauce/docs/wiki/Configuration
