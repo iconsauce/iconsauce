@@ -26,7 +26,7 @@
     "handlebars": "4.7.8",
     "recursive-copy": "2.0.14",
     "svg2ttf": "6.0.3",
-    "svgicons2svgfont": "10.0.6"
+    "svgicons2svgfont": "15.0.1"
   },
   "devDependencies": {
     "material-design-icons-updated": "7.0.0",

@@ -3,7 +3,7 @@ import { createReadStream, createWriteStream, PathLike, ReadStream } from 'fs'
 import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
 import svg2ttf from 'svg2ttf'
-import SVGIcons2SVGFontStream from 'svgicons2svgfont'
+import { SVGIcons2SVGFontStream } from 'svgicons2svgfont'
 import { Config } from '@iconsauce/config/lib/interface/config'
 import { PROJECT_NAME, TEMP_PATH } from './utils'
 
@@ -34,8 +34,7 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
       fontHeight: 2048,
       fontName: config.fontFamily,
       fontStyle: 'normal',
-      fontWeight: '400',
-      log: () => null,
+      fontWeight: 400,
       normalize: false,
     })
 

@@ -5,9 +5,11 @@ module.exports = {
   testEnvironment: 'node',
   transform: {
     '^.+\\.ts$': 'ts-jest',
+    '^.+\\.js$': 'babel-jest',
   },
   testRegex: [
     '([a-z/.]{1,}).test.ts$',
   ],
+  transformIgnorePatterns: ['node_modules/(?!svgicons2svgfont|svg-pathdata|yerror)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 }
