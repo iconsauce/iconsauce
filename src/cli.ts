@@ -5,10 +5,10 @@ import { PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
 import { IconsauceConfig } from '@iconsauce/config'
 import { build } from './build'
-import { buildCSS, buildDictionary, buildSVG, buildDump } from './index'
+import { buildCSS } from './index'
 import { name, version } from '../package.json'
 import { Config } from '@iconsauce/config/lib/interface/config'
-import { checkFilePath } from './lib/utils'
+import { checkFilePath, exportMap, exportSVG } from './lib/utils'
 let configPath = undefined
 
 const args = arg({
@@ -32,13 +32,9 @@ if (args['--config']) {
   configPath = args['--config']
 }
 
-if (args['--skip-warnings'] === undefined) {
-  args['--skip-warnings'] = true
-}
+args['--skip-warnings'] ??= true;
 
-if (args['--verbose'] === undefined) {
-  args['--verbose'] = false
-}
+args['--verbose'] ??= false;
 
 function loadConfig (configPath: string | undefined): Promise<Config> {
   return new IconsauceConfig(args['--skip-warnings'], args['--verbose']).loadConfig(configPath)
@@ -54,17 +50,17 @@ loadConfig(configPath).then(config =>
     }
 
     if (args['--output-dump-svg'] !== undefined) {
-      buildDump(config, data.dictionary, args['--output-dump-svg'])
+      exportSVG(data.dictionary, args['--output-dump-svg'], config.verbose)
         .catch(console.error)
     }
 
     if (args['--output-dictionary'] !== undefined) {
-      buildDictionary(config, data.list, args['--output-dictionary'])
+      exportMap(data.list, args['--output-dictionary'], config.verbose)
         .catch(console.error)
     }
 
     if (args['--output-svg'] !== undefined) {
-      buildSVG(config, data.list, args['--output-svg'])
+      exportSVG(data.list, args['--output-svg'], config.verbose)
     }
 
     if (args['--output-css'] !== undefined) {
