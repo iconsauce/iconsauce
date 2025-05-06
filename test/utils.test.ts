@@ -29,7 +29,8 @@ describe('export functionality', () => {
 
   test('export svg', async () => {
     await exportSVG(filteredDictionary, testDirectory)
-    const files = await readdir(testDirectory, {recursive: true})
+    // replace sep path for windows
+    const files = (await readdir(testDirectory, {recursive: true})).map(p => p.replace(/\\/g, '/'))
     filteredDictionary.forEach((icons, path) => {
       expect(files).toContain(`${path}.svg`)
     })
