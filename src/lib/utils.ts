@@ -2,7 +2,7 @@ import chalk from 'chalk'
 import { PathLike } from 'fs'
 import { mkdir, writeFile } from 'fs/promises'
 import path from 'path'
-import copy from 'recursive-copy'
+import { copy } from 'fs-extra'
 
 const PROJECT_NAME = 'iconsauce'
 const TEMP_PATH = path.resolve(__dirname, path.join('..', '..', '.temp'))
