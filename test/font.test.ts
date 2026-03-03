@@ -14,10 +14,7 @@ describe('Font', () => {
       })
   })
   test('Check it throw error cause icons are empty', async () => {
-    return fontBase64(configTest, new Map())
-      .catch(error => {
-        expect(error).toMatch('Error: Icons map cannot be empty')
-      })
+    await expect(fontBase64(configTest, new Map())).rejects.toThrow('Icons map cannot be empty')
   })
   test('Check the dictionary generated', async () => {
     return fontBase64(configTest, filteredDictionary)

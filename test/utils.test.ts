@@ -9,7 +9,7 @@ import { iconsDictionary } from './fixtures/icons'
 describe('export functionality', () => {
   const testDirectory = './test/temp'
   afterEach(async () => {
-    await rm(testDirectory, { recursive: true, force: true})
+    await rm(testDirectory, { recursive: true, force: true })
   })
 
   test('export map', async () => {
@@ -23,14 +23,14 @@ describe('export functionality', () => {
     const testFile = `${testDirectory}`
     const errorMsg = `${testFile} is not a json file path`
     await expect(async () => {
-      await exportMap(iconsDictionary, testFile);
-    }).rejects.toThrow(errorMsg);
+      await exportMap(iconsDictionary, testFile)
+    }).rejects.toThrow(errorMsg)
   })
 
   test('export svg', async () => {
     await exportSVG(filteredDictionary, testDirectory)
     // replace sep path for windows
-    const files = (await readdir(testDirectory, {recursive: true})).map(p => p.replace(/\\/g, '/'))
+    const files = (await readdir(testDirectory, { recursive: true })).map(p => p.replace(/\\/g, '/'))
     filteredDictionary.forEach((icons, path) => {
       expect(files).toContain(`${path}.svg`)
     })

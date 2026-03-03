@@ -32,9 +32,9 @@ if (args['--config']) {
   configPath = args['--config']
 }
 
-args['--skip-warnings'] ??= true;
+args['--skip-warnings'] ??= true
 
-args['--verbose'] ??= false;
+args['--verbose'] ??= false
 
 function loadConfig (configPath: string | undefined): Promise<Config> {
   return new IconsauceConfig(args['--skip-warnings'], args['--verbose']).loadConfig(configPath)
@@ -60,7 +60,7 @@ loadConfig(configPath).then(config =>
     }
 
     if (args['--output-svg'] !== undefined) {
-      exportSVG(data.list, args['--output-svg'], config.verbose)
+      exportSVG(data.list, args['--output-svg'], config.verbose).catch(console.error)
     }
 
     if (args['--output-css'] !== undefined) {

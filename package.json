@@ -8,7 +8,7 @@
     "postbuild": "cp -r ./build/src ./lib",
     "clean": "rm -rf build lib coverage .temp",
     "dev": "tsc --watch",
-    "lint": "eslint --ignore-path .eslintignore",
+    "lint": "eslint --fix",
     "prepublishOnly": "npm run build && npm run test",
     "test": "jest"
   },

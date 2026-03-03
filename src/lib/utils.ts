@@ -23,9 +23,9 @@ function checkFilePath (filePath: PathLike) {
  * @param outputFilePath a path of a file where to export the given map
  * @param verbose if should write info message
  */
-async function exportMap (dictionary: Map<any, any>, outputFilePath: PathLike, verbose?: boolean): Promise<void> {
-  if( !outputFilePath.toString().endsWith('.json')) {
-    throw new Error(chalk.red(`${outputFilePath} is not a json file path`))
+async function exportMap (dictionary: Map<string, PathLike>, outputFilePath: PathLike, verbose?: boolean): Promise<void> {
+  if ( !outputFilePath.toString().endsWith('.json')) {
+    throw new Error(chalk.red(`${outputFilePath.toString()} is not a json file path`))
   }
 
   const jsonDictionary = JSON.stringify(Array.from(dictionary.keys()), null, 4)
@@ -52,7 +52,7 @@ async function exportMap (dictionary: Map<any, any>, outputFilePath: PathLike, v
  * @param outputPath output directory path where export svg icon
  * @param verbose if should write info message
  */
-async function exportSVG(iconsDictionary: Map<string, PathLike>, outputPath: PathLike, verbose?: boolean): Promise<void> {
+async function exportSVG (iconsDictionary: Map<string, PathLike>, outputPath: PathLike, verbose?: boolean): Promise<void> {
   if (verbose) {
     console.info(`Dumping ${chalk.yellow(iconsDictionary.size)} SVG files, please wait...`)
   }
