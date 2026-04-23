@@ -1,11 +1,11 @@
 import chalk from 'chalk'
-import { createReadStream, createWriteStream, PathLike, ReadStream } from 'fs'
+import { createReadStream, createWriteStream, type PathLike, type ReadStream } from 'fs'
 import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
 // import svg2ttf from 'svg2ttf'
 import { Font } from 'fonteditor-core'
 import { SVGIcons2SVGFontStream } from 'svgicons2svgfont'
-import { Config } from '@iconsauce/config/lib/interface/config'
+import { type Config } from '@iconsauce/config/lib/interface/config'
 import { PROJECT_NAME, TEMP_PATH } from './utils'
 
 interface Glyph extends ReadStream {
@@ -39,7 +39,7 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
       normalize: false,
     })
 
-    const dictionary: Map<string, string> = new Map()
+    const dictionary = new Map<string, string>()
 
     for (const iconSelector of icons.keys()) {
       const glyph = createReadStream(path.resolve(icons.get(iconSelector) as string)) as Glyph

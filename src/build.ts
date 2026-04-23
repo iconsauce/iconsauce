@@ -1,11 +1,11 @@
 import fg from 'fast-glob'
 import chalk from 'chalk'
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import { occurrences } from './lib/occurrences'
 import { icons } from './lib/icons'
 import { filter } from './lib/filter'
 import { IconsauceConfig } from '@iconsauce/config'
-import { Config } from '@iconsauce/config/lib/interface/config'
+import { type Config } from '@iconsauce/config/lib/interface/config'
 
 const build = async (configuration?: Config): Promise<{ dictionary: Map<string, PathLike>, list: Map<string, PathLike> } | undefined> => {
   const config: Config = configuration ?? new IconsauceConfig()

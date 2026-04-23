@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 import arg from 'arg'
 import chalk from 'chalk'
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import { writeFile } from 'fs/promises'
 import { IconsauceConfig } from '@iconsauce/config'
 import { build } from './build'
 import { buildCSS } from './index'
 import { name, version } from '../package.json'
-import { Config } from '@iconsauce/config/lib/interface/config'
+import { type Config } from '@iconsauce/config/lib/interface/config'
 import { checkFilePath, exportMap, exportSVG } from './lib/utils'
 let configPath = undefined
 

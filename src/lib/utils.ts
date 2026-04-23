@@ -1,5 +1,5 @@
 import chalk from 'chalk'
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import { mkdir, writeFile } from 'fs/promises'
 import path from 'path'
 import { copy } from 'fs-extra'

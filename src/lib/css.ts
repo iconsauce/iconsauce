@@ -1,6 +1,6 @@
-import { PathLike } from 'fs'
-import handlebars, { HelperOptions } from 'handlebars'
-import { Config } from '@iconsauce/config/lib/interface/config'
+import { type PathLike } from 'fs'
+import handlebars, { type HelperOptions } from 'handlebars'
+import { type Config } from '@iconsauce/config/lib/interface/config'
 
 const template = handlebars.compile(`@font-face {
   font-family: "{{fontFamily}}";
@@ -23,7 +23,7 @@ const template = handlebars.compile(`@font-face {
 `)
 
 handlebars.registerHelper('iconselector', (key: string, value: string) => {
-  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.codePointAt(0)?.toString(16) as string}" }`)
+  return new handlebars.SafeString(`.${key.replace(/\//g, '\\/')}::before { content: "\\${value.codePointAt(0)?.toString(16)}" }`)
 })
 
 handlebars.registerHelper('eachInMap', (map: Map<string, PathLike>, block: HelperOptions ) => {

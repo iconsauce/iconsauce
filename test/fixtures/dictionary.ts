@@ -1,7 +1,7 @@
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import path from 'path'
 
-const dictionary: Map<string, PathLike> = new Map()
+const dictionary = new Map<string, PathLike>()
 
 dictionary.set('miu/filled/10k', path.resolve(__dirname, 'icons/ic_10k_24px.svg'))
 dictionary.set('miu/filled/1k', path.resolve(__dirname, 'icons/ic_1k_24px.svg'))

@@ -1,14 +1,14 @@
 import fg from 'fast-glob'
 import chalk from 'chalk'
-import { IconsaucePlugin } from '@iconsauce/plugin'
-import { Config } from '@iconsauce/config/lib/interface/config'
-import { PathLike } from 'fs'
+import { type IconsaucePlugin } from '@iconsauce/plugin'
+import { type Config } from '@iconsauce/config/lib/interface/config'
+import { type PathLike } from 'fs'
 
 const dictionary = (plugin: IconsaucePlugin, icons: PathLike[]) => {
-  const iconsDictionary: Map<string, PathLike> = new Map()
+  const iconsDictionary = new Map<string, PathLike>()
   let icon
   for (icon of icons) {
-    const iconPath = icon.toString().match(plugin.regex.lib) as RegExpMatchArray
+    const iconPath = icon.toString().match(plugin.regex.lib)!
     if (iconPath === null) {
       throw Error(`${chalk.red('IconsaucePlugin regex.lib not matching icons for the path')} ${icon.toString()}`)
     }
@@ -19,7 +19,7 @@ const dictionary = (plugin: IconsaucePlugin, icons: PathLike[]) => {
 
 const icons = async (config: Config): Promise<Map<string, PathLike>> => {
   let pluginItem
-  let iconsDictionary: Map<string, PathLike> = new Map()
+  let iconsDictionary = new Map<string, PathLike>()
   for (pluginItem of config.plugin) {
     const entries = await fg(pluginItem.path.toString(), { dot: true })
     const newIcons = dictionary(pluginItem, entries)

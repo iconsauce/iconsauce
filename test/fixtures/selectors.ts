@@ -1,7 +1,7 @@
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import path from 'path'
 
-const map: Map<string, PathLike> = new Map()
+const map = new Map<string, PathLike>()
 map.set('miu/filled/accessible-forward', path.resolve(__dirname, 'files/component.tsx'))
 map.set('miu/filled/add-chart', path.resolve(__dirname, 'files/component-gm.tsx'))
 map.set('miu/filled/close', path.resolve(__dirname, 'files/component-gm.tsx'))

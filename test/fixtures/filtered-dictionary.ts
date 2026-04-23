@@ -1,7 +1,7 @@
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import path from 'path'
 
-const filteredDictionary: Map<string, PathLike> = new Map()
+const filteredDictionary = new Map<string, PathLike>()
 
 filteredDictionary.set('miu/filled/accessible-forward', path.resolve(__dirname, 'icons/ic_accessible_forward_24px.svg'))
 filteredDictionary.set('miu/filled/add-chart', path.resolve(__dirname, 'icons/ic_add_chart_24px.svg'))

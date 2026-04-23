@@ -1,4 +1,4 @@
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 import { occurrences } from '../src/lib/occurrences'
 import { configTest } from './fixtures/config'
 import files from './fixtures/files'

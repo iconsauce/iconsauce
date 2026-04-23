@@ -1,4 +1,4 @@
-import { PathLike } from 'fs'
+import { type PathLike } from 'fs'
 
 const iconsSvgPaths = [
   '/node_modules/material-design-icons-updated/icons/filled/alert/ic_add_alert_24px.svg',
@@ -13,7 +13,7 @@ const iconsSvgPaths = [
   '/node_modules/material-design-icons-updated/icons/filled/communication/ic_alternate_email_24px.svg',
 ]
 
-const iconsDictionary: Map<string, PathLike> = new Map()
+const iconsDictionary = new Map<string, PathLike>()
 iconsDictionary.set('miu/filled/add-alert', '/node_modules/material-design-icons-updated/icons/filled/alert/ic_add_alert_24px.svg')
 iconsDictionary.set('miu/filled/auto-delete', '/node_modules/material-design-icons-updated/icons/filled/alert/ic_auto_delete_24px.svg')
 iconsDictionary.set('miu/filled/error', '/node_modules/material-design-icons-updated/icons/filled/alert/ic_error_24px.svg')

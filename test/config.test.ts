@@ -1,5 +1,5 @@
 import { IconsauceConfig } from '@iconsauce/config'
-import { Config } from '@iconsauce/config/lib/interface/config'
+import { type Config } from '@iconsauce/config/lib/interface/config'
 import path from 'path'
 import { configTest } from './fixtures/config'
 

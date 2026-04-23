@@ -1,12 +1,12 @@
 import { readFile } from 'fs/promises'
 import chalk from 'chalk'
-import { Config } from '@iconsauce/config/lib/interface/config'
-import { PathLike } from 'fs'
+import { type Config } from '@iconsauce/config/lib/interface/config'
+import { type PathLike } from 'fs'
 
 const occurrences = async (config: Config, files: PathLike[]): Promise<{ occurrences: string[], map: Map<string, PathLike> }> => {
   let pluginItem
   let inputIcons: string[] = []
-  const filesMap: Map<string, PathLike> = new Map()
+  const filesMap = new Map<string, PathLike>()
   let selector
 
   for (const file of files) {
