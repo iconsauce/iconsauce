@@ -41,9 +41,6 @@ export default defineConfig([
       sourceType: "module",
       parser: tsParser,
       ecmaVersion: 5,
-      parserOptions: {
-        project: "./tsconfig.eslint.json",
-      },
     },
 
     settings: {

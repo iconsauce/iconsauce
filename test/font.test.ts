@@ -7,7 +7,6 @@ import base64Font from './fixtures/base64-font'
 describe('Font', () => {
   test('Check the Base64 generated font', async () => {
     const data = await fontBase64(configTest, filteredDictionary)
-    console.log(data.base64font)
     expect(data.base64font.length).toEqual(base64Font.length)
   })
 

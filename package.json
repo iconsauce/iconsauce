@@ -4,7 +4,7 @@
   "description": "Includes only the SVG icons matched in your code and generates a CSS icon font set.",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run clean && tsc --declaration",
+    "build": "npm run clean && tsc --declaration -p tsconfig.build.json",
     "postbuild": "cp -r ./build/src ./lib",
     "clean": "rm -rf build lib coverage .temp",
     "dev": "tsc --watch",
@@ -23,9 +23,9 @@
     "arg": "5.0.2",
     "chalk": "4.0.0",
     "fast-glob": "3.3.3",
+    "fonteditor-core": "2.6.3",
     "fs-extra": "11.3.0",
     "handlebars": "4.7.9",
-    "fonteditor-core": "2.6.3",
     "svgicons2svgfont": "15.0.1"
   },
   "devDependencies": {
@@ -38,18 +38,18 @@
     "@mdi/svg": "7.3.67",
     "@types/debug": "4.1.12",
     "@types/fs-extra": "11.0.4",
-    "@types/jest": "30.0.0",
+    "@types/jest": "30.3.0",
     "@types/node": "25.3.3",
     "@types/svg2ttf": "5.0.3",
-    "@typescript-eslint/eslint-plugin": "8.56.1",
-    "@typescript-eslint/parser": "8.56.1",
+    "@typescript-eslint/eslint-plugin": "8.59.0",
+    "@typescript-eslint/parser": "8.59.0",
     "eslint": "9.39.3",
     "globals": "17.4.0",
-    "jest": "30.2.0",
+    "jest": "30.3.0",
     "material-design-icons-updated": "7.0.0",
     "prettier": "3.4.2",
-    "ts-jest": "29.4.6",
-    "typescript": "5.9.3"
+    "ts-jest": "29.4.9",
+    "typescript": "6.0.3"
   },
   "keywords": [
     "build",
