@@ -2,7 +2,8 @@ import chalk from 'chalk'
 import { createReadStream, createWriteStream, PathLike, ReadStream } from 'fs'
 import { mkdir, readFile } from 'fs/promises'
 import path from 'path'
-import svg2ttf from 'svg2ttf'
+// import svg2ttf from 'svg2ttf'
+import { Font } from 'fonteditor-core'
 import { SVGIcons2SVGFontStream } from 'svgicons2svgfont'
 import { Config } from '@iconsauce/config/lib/interface/config'
 import { PROJECT_NAME, TEMP_PATH } from './utils'
@@ -71,8 +72,19 @@ const fontBase64 = async (config: Config, icons: Map<string, PathLike>): Promise
 }
 
 const fontTottf = async () => {
-  const ttf = svg2ttf(await readFile(TEMP_FONT_PATH_SVG, 'utf8'), {})
-  return Buffer.from(ttf.buffer).toString('base64')
+  const svgContent = await readFile(TEMP_FONT_PATH_SVG, 'utf8')
+
+  // Creo l'oggetto Font caricando l'SVG
+  const font = Font.create(svgContent, {
+    type: 'svg',
+  })
+
+  // Scrivo il font in formato TTF (restituisce un Buffer)
+  const ttfBuffer = font.write({
+    type: 'ttf',
+  }) as Buffer
+
+  return ttfBuffer.toString('base64')
 }
 
 export {

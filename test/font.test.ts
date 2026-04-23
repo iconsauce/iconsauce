@@ -6,23 +6,18 @@ import base64Font from './fixtures/base64-font'
 
 describe('Font', () => {
   test('Check the Base64 generated font', async () => {
-    return fontBase64(configTest, filteredDictionary)
-      .then(data => {
-        expect(data.base64font.length).toEqual(base64Font.length)
-      }).catch(error => {
-        console.error(error)
-      })
+    const data = await fontBase64(configTest, filteredDictionary)
+    console.log(data.base64font)
+    expect(data.base64font.length).toEqual(base64Font.length)
   })
+
   test('Check it throw error cause icons are empty', async () => {
     await expect(fontBase64(configTest, new Map())).rejects.toThrow('Icons map cannot be empty')
   })
+
   test('Check the dictionary generated', async () => {
-    return fontBase64(configTest, filteredDictionary)
-      .then(data => {
-        const keys = Array.from(data.dictionary.keys())
-        expect(keys).toEqual(expect.arrayContaining(occurrencesCleaned))
-      }).catch(error => {
-        console.error(error)
-      })
+    const data = await fontBase64(configTest, filteredDictionary)
+    const keys = Array.from(data.dictionary.keys())
+    expect(keys).toEqual(occurrencesCleaned)
   })
 })
