@@ -1,4 +1,5 @@
 import chalk from 'chalk'
+import { Font } from 'fonteditor-core'
 import { fontBase64 } from '../src/lib/font'
 import { occurrencesCleaned } from './fixtures/selectors'
 import { configTest } from './fixtures/config'
@@ -14,6 +15,19 @@ describe('Font', () => {
     expect(base64font.length).toBeGreaterThan(0)
     expect(base64font).toMatch(/^[A-Za-z0-9+/]*$/)
     expect(base64font).not.toMatch(/=$/)
+  })
+
+  test('OS/2 vertical metrics match hhea metrics (Firefox USE_TYPO_METRICS)', async () => {
+    const { base64font } = await fontBase64(configTest, filteredDictionary)
+    const ttf = Font.create(Buffer.from(base64font, 'base64'), { type: 'ttf' }).get()
+    const { ascent, descent, lineGap } = ttf.hhea
+    expect(ascent - descent).toBe(ttf.head.unitsPerEm)
+    expect(lineGap).toBe(0)
+    expect(ttf['OS/2'].sTypoAscender).toBe(ascent)
+    expect(ttf['OS/2'].sTypoDescender).toBe(descent)
+    expect(ttf['OS/2'].sTypoLineGap).toBe(0)
+    expect(ttf['OS/2'].usWinAscent).toBe(ascent)
+    expect(ttf['OS/2'].usWinDescent).toBe(Math.abs(descent))
   })
 
   test('Check it throw error cause icons are empty', async () => {

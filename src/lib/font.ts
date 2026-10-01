@@ -79,6 +79,18 @@ const fontTottf = async () => {
     type: 'svg',
   })
 
+  // fonteditor-core keeps the OS/2 metrics of its empty template (designed for 1000 units/em),
+  // while the font uses 2048: browsers honoring USE_TYPO_METRICS (Firefox) render glyphs at half height.
+  // Align OS/2 and hhea vertical metrics to the real font height
+  const ttf = font.get()
+  const { ascent, descent } = ttf.hhea
+  ttf.hhea.lineGap = 0
+  ttf['OS/2'].sTypoAscender = ascent
+  ttf['OS/2'].sTypoDescender = descent
+  ttf['OS/2'].sTypoLineGap = 0
+  ttf['OS/2'].usWinAscent = ascent
+  ttf['OS/2'].usWinDescent = Math.abs(descent)
+
   // Scrivo il font in formato TTF (restituisce un Buffer)
   const ttfBuffer = font.write({
     type: 'ttf',
